@@ -1,7 +1,3 @@
-import React from 'react'
-import { CircleMarker } from 'react-leaflet';
-import MapMarker from '../../layout/MapMarker';
-
 import L from "leaflet";
 import { Marker } from "react-leaflet";
 import icon from "/public/img/Group 17 (1).png";

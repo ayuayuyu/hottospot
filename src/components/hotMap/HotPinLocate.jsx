@@ -27,10 +27,7 @@ function HotPinLocate({ setIsOpen, setPosition }) {
 
 
   function Icon(location) {
-    
-
-    console.log("location.likeCount", location.likeCount);
-
+  
     const showIcon = 
     location.likeCount < 50 ? blueicon:
     location.likeCount >= 50 && location.likeCount < 100 ? greenicon:

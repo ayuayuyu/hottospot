@@ -40,9 +40,13 @@ const AlbumMap = ({ latitude, longitude }) => {
           url="https://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}"
         />
         <Marker position={center} />
-        <HotPinLocate setIsOpen={setIsOpen} setPosition={setPosition} />
-      </MapContainer>
 
+        {/* ここをAlbumPinLocateにしたらアルバムの画面に */}
+        <HotPinLocate setIsOpen={setIsOpen} setPosition={setPosition} />
+        
+      </MapContainer> 
+
+      {/* ここをAlbumModalSheetにしたらアルバムの画面に */}    
       <HotModalSheet
         setIsOpen={setIsOpen}
         isOpen={isOpen}

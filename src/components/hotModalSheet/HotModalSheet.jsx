@@ -6,6 +6,8 @@ import { grey } from "@mui/material/colors";
 import Skeleton from "@mui/material/Skeleton";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import { Typography } from "@mui/material";
+import { GradationIconButton } from "../../layout/GradationIconButton";
+import { GradationButton } from "../../layout/GradationButton";
 
 const Root = styled("div")(({ theme }) => ({
   height: "100%",
@@ -76,10 +78,15 @@ function HotModalSheet({ setIsOpen, isOpen, setPosition, position }) {
             <Typography sx={{ p: 2, color: "text.secondary" }}>
               {position.name}で撮った写真
             </Typography>
+            <GradationIconButton
+              color="red"
+              url="https://api.iconify.design/icon-park-outline:ranking.svg?color=%23ffffff"
+            />
+            <GradationButton color="red">button</GradationButton>
           </StyledBox>
-          <StyledBox sx={{ px: 2, pb: 2, height: "100%", overflow: "auto" }}>
-            
-          </StyledBox>
+          <StyledBox
+            sx={{ px: 2, pb: 2, height: "100%", overflow: "auto" }}
+          ></StyledBox>
         </SwipeableDrawer>
       </Root>
     </div>

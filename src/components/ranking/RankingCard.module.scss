@@ -1,0 +1,84 @@
+.card {
+  height: 64px;
+  font-weight: bold;
+  position: relative;
+  width: 333px;
+  background: #ffffff;
+  color: #1b2838;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.info {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  left: 16px;
+}
+
+.likesContainer {
+  display: flex;
+  gap: 4px;
+}
+
+.gradationText {
+  font-size: 24px;
+  background: linear-gradient(97.4deg, #f84f90 0%, #ed4b4b 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: -7px;
+  margin-bottom: -7px;
+}
+
+.ranking {
+  font-size: 24px;
+  color: #ffffff;
+}
+
+.redCircle {
+  position: absolute;
+  z-index: 1;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  transform: translateX(-50%);
+  background: linear-gradient(97.4deg, #f84f90 0%, #ed4b4b 100%);
+}
+
+.whiteCircle {
+  position: absolute;
+  z-index: 1;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  left: 40%;
+  background: #ffffff;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.imageContainer {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  right: 0;
+  overflow: hidden;
+}
+
+.image {
+  height: 100%;
+  width: auto;
+}
+
+.black {
+  color: #1b2838;
+}

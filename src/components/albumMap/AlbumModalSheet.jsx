@@ -35,7 +35,6 @@ const Puller = styled("div")(({ theme }) => ({
 }));
 
 function AlbumModalSheet({ setIsOpen, isOpen, setPosition, position }) {
-
   return (
     <>
       <Root>
@@ -75,9 +74,9 @@ function AlbumModalSheet({ setIsOpen, isOpen, setPosition, position }) {
               {position.name}で撮った写真
             </Typography>
           </StyledBox>
-          <StyledBox sx={{ px: 2, pb: 2, height: "100%", overflow: "auto" }}>
-            
-          </StyledBox>
+          <StyledBox
+            sx={{ px: 2, pb: 2, height: "100%", overflow: "auto" }}
+          ></StyledBox>
         </SwipeableDrawer>
       </Root>
     </>

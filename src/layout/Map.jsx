@@ -13,10 +13,7 @@ function Map() {
 
   return (
     <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0 }}>
-      <AlbumMap
-        latitude={position.latitude}
-        longitude={position.longitude}
-      />
+      <AlbumMap latitude={position.latitude} longitude={position.longitude} />
     </div>
   );
 }

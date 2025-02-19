@@ -6,6 +6,7 @@ import { grey } from "@mui/material/colors";
 import Skeleton from "@mui/material/Skeleton";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import { Typography } from "@mui/material";
+import { RankingCard } from "../../layout/RankingCard";
 
 const Root = styled("div")(({ theme }) => ({
   height: "100%",
@@ -76,10 +77,17 @@ function HotModalSheet({ setIsOpen, isOpen, setPosition, position }) {
             <Typography sx={{ p: 2, color: "text.secondary" }}>
               {position.name}で撮った写真
             </Typography>
+            <RankingCard
+              ranking="1"
+              location="名古屋城"
+              heartsCount="12402"
+              url="/greenIcon.png"
+              onClick
+            />
           </StyledBox>
-          <StyledBox sx={{ px: 2, pb: 2, height: "100%", overflow: "auto" }}>
-            
-          </StyledBox>
+          <StyledBox
+            sx={{ px: 2, pb: 2, height: "100%", overflow: "auto" }}
+          ></StyledBox>
         </SwipeableDrawer>
       </Root>
     </div>

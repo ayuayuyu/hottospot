@@ -8,6 +8,7 @@ import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import { Typography } from "@mui/material";
 import { GradationIconButton } from "../../layout/GradationIconButton";
 import { GradationButton } from "../../layout/GradationButton";
+import { WhiteButton } from "../../layout/WhiteButton";
 
 const Root = styled("div")(({ theme }) => ({
   height: "100%",
@@ -83,6 +84,7 @@ function HotModalSheet({ setIsOpen, isOpen, setPosition, position }) {
               url="https://api.iconify.design/icon-park-outline:ranking.svg?color=%23ffffff"
             />
             <GradationButton color="red">button</GradationButton>
+            <WhiteButton color="red">button</WhiteButton>
           </StyledBox>
           <StyledBox
             sx={{ px: 2, pb: 2, height: "100%", overflow: "auto" }}

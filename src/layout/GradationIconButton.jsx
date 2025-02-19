@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { easeOut, motion } from "framer-motion";
-import styles from "./GradationIconButton.module.css";
+import styles from "./GradationIconButton.module.scss";
 
 export const GradationIconButton = ({ url, color, onClick }) => {
   return (

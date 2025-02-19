@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
-import styles from "./GradationButton.module.scss";
+import styles from "./WhiteButton.module.scss";
 
-export const GradationButton = ({ children, color, onClick }) => {
+export const WhiteButton = ({ children, color, onClick }) => {
   const transition = {
     duration: 0.2,
     ease: "easeInOut",
@@ -15,15 +15,14 @@ export const GradationButton = ({ children, color, onClick }) => {
       whileTap={{ scale: 0.92 }}
       transition={transition}
       onClick={onClick}
-      style={{ outline: "none" }}
     >
-      {children}
+      <div>{children}</div>
     </motion.div>
   );
 };
 
-GradationButton.propTypes = {
+WhiteButton.propTypes = {
   children: PropTypes.node.isRequired,
-  color: PropTypes.oneOf(["gray", "red", "white", "none"]),
-  onClick: PropTypes.func.isRequired,
+  color: PropTypes.oneOf(["red", "blue", "green"]),
+  onClick: PropTypes.func,
 };

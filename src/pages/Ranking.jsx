@@ -1,4 +1,4 @@
-import { RankingCard } from "../components/ranking/RankingCard";
+import { RankingCard } from "./../components/ranking/RankingCard";
 import { GradationIconButton } from "./../layout/GradationIconButton";
 import { PageTitle } from "./../layout/PageTitle";
 
@@ -49,7 +49,10 @@ function Ranking() {
             url="https://api.iconify.design/material-symbols:photo-album-outline-rounded.svg?color=%23ffffff"
           />
         ) : (
-          <GradationIconButton url="https://api.iconify.design/material-symbols:photo-album-outline-rounded.svg?color=%231b2838" />
+          <GradationIconButton
+            color="gray"
+            url="https://api.iconify.design/material-symbols:photo-album-outline-rounded.svg?color=%231b2838"
+          />
         )}
         {page === "ranking" ? (
           <GradationIconButton
@@ -57,7 +60,10 @@ function Ranking() {
             url="https://api.iconify.design/icon-park-outline:ranking.svg?color=%23ffffff"
           />
         ) : (
-          <GradationIconButton url="https://api.iconify.design/icon-park-outline:ranking.svg?color=%231b2838" />
+          <GradationIconButton
+            color="gray"
+            url="https://api.iconify.design/icon-park-outline:ranking.svg?color=%231b2838"
+          />
         )}
       </div>
       <div
@@ -74,7 +80,7 @@ function Ranking() {
             ranking={i + 1}
             location="愛知県 名古屋城"
             heartsCount={120}
-            url="/image1.png"
+            url="/vite.svg"
           />
         ))}
       </div>

@@ -16,7 +16,7 @@ export const PageTitle = ({ pageName, children }) => {
         <span className={styles.description}>{children}</span>
       </div>
       <div className={styles.imgContainer}>
-        <img src="/img/backfire.svg" alt="icon" width={24} height={24} />
+        <img src="/img/backfire.svg" alt="icon" width={220} height={220} />
       </div>
     </div>
   );

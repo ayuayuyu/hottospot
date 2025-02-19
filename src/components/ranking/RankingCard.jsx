@@ -26,7 +26,7 @@ export const RankingCard = ({ ranking, location, heartsCount, url }) => {
         </div>
       </div>
       <div className={styles.imageContainer}>
-        <img src={url} alt="icon" width={24} height={24} />
+        <img src={url} alt="icon" style={{ width: "100%", height: "auto" }} />
       </div>
     </div>
   );

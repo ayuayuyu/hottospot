@@ -16,7 +16,6 @@ import { Box, Modal, Typography } from "@mui/material";
 import AlbumModalSheet from "./AlbumModalSheet";
 import HotPinLocate from "../hotMap/HotPinLocate";
 import AlbumPinLocate from "./AlbumPinLocate";
-import HotModalSheet from "../hotModalSheet/HotModalSheet";
 
 const AlbumMap = ({ latitude, longitude }) => {
   const [isOpen, setIsOpen] = useState(false); //マーカー選択
@@ -43,10 +42,9 @@ const AlbumMap = ({ latitude, longitude }) => {
 
         {/* ここをAlbumPinLocateにしたらアルバムの画面に */}
         <HotPinLocate setIsOpen={setIsOpen} setPosition={setPosition} />
-        
-      </MapContainer> 
+      </MapContainer>
 
-      {/* ここをAlbumModalSheetにしたらアルバムの画面に */}    
+      {/* ここをAlbumModalSheetにしたらアルバムの画面に */}
       <HotModalSheet
         setIsOpen={setIsOpen}
         isOpen={isOpen}

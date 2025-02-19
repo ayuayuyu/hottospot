@@ -6,7 +6,7 @@ import { grey } from "@mui/material/colors";
 import Skeleton from "@mui/material/Skeleton";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import { Typography } from "@mui/material";
-import { RankingCard } from "../../layout/RankingCard";
+import { RankingCard } from "../ranking/RankingCard";
 
 const Root = styled("div")(({ theme }) => ({
   height: "100%",

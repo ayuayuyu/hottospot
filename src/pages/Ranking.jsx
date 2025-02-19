@@ -1,4 +1,4 @@
-import { RankingCard } from "./../layout/RankingCard";
+import { RankingCard } from "../components/ranking/RankingCard";
 import { GradationIconButton } from "./../layout/GradationIconButton";
 import { PageTitle } from "./../layout/PageTitle";
 
@@ -10,6 +10,7 @@ function Ranking() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        overflowX: "hidden",
       }}
     >
       <PageTitle pageName="ランキング">

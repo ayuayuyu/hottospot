@@ -1,5 +1,4 @@
 import styles from "./RankingCard.module.scss";
-import Image from "next/image";
 import PropTypes from "prop-types";
 
 export const RankingCard = ({ ranking, location, heartsCount, url }) => {
@@ -21,19 +20,13 @@ export const RankingCard = ({ ranking, location, heartsCount, url }) => {
         <div className={styles.right}>
           <div>{location}</div>
           <div className={styles.likesContainer}>
-            <Image
-              className={styles.heart}
-              src="/Heart.svg"
-              alt={location}
-              width={26}
-              height={26}
-            />
+            <img src="/img/Heart.svg" alt="icon" width={24} height={24} />
             <div className={styles.gradationText}>{heartsCount}</div>
           </div>
         </div>
       </div>
       <div className={styles.imageContainer}>
-        <Image className={styles.image} src={url} alt={location} fill />
+        <img src={url} alt="icon" width={24} height={24} />
       </div>
     </div>
   );

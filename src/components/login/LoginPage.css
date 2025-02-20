@@ -17,12 +17,21 @@
 }
 .sign-in {
   display: flex;
-  margin-top:20px;
+  top:230px;
   text-alighn: center;
-  justify-content: center;
+  position:absolute;
+  z-index:30;
+  justify-content:center;
+  margin:0 auto;
+  width:100%;
+
 }
 .sign-out {
   display: flex;
-  margin-top:10px;
+  top:65px;
+  position:relative;
   justify-content: center;
+  z-index:30;
+  margin:0 auto;
+  width:100%;
 }

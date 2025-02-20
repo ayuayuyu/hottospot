@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Title from "../../layout/home/Title";
 import Background from "../../layout/home/background";
 import "./LoginPage.css";
 import { WhiteButton } from "../../layout/WhiteButton";
+import HotModalSheet from "../hotModalSheet/HotModalSheet";
+import SignInModal from "../sign/SignInModal";
 
 function LoginPage() {
+  const [isOpen, setIsOpen] = useState(false); //マーカー選択
+
+  const [position, setPosition] = useState({ latitude: null, longitude: null });
+
+  const handleSignIn = () => {
+    console.log("hello");
+    setIsOpen(true)
+  };
+  const handleSignUp = () => {
+    console.log("app");
+  };
   return (
     <div>
       <div
@@ -22,14 +35,23 @@ function LoginPage() {
           HottoSpot<span className="explanation-hello">へようこそ</span>
         </span>
         <div className="sign-in">
-          <WhiteButton color="red">サインイン</WhiteButton>
+          <WhiteButton color="red" onClick={handleSignIn}>
+            サインイン
+          </WhiteButton>
         </div>
         <div className="sign-out">
-          <WhiteButton color="red">サインアップ</WhiteButton>
+          <WhiteButton color="red" onClick={handleSignUp}>
+            サインアップ
+          </WhiteButton>
         </div>
       </div>
 
-      <Background />
+      <SignInModal
+        setIsOpen={setIsOpen}
+        isOpen={isOpen}
+        setPosition={setPosition}
+        position={position}
+      />
     </div>
   );
 }

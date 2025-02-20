@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { easeOut, motion } from "framer-motion";
 import styles from "./GradationIconButton.module.scss";
 
-export const GradationIconButton = ({ url, color, onClick }) => {
+export const GradationIconButton = ({ children, color, onClick }) => {
   return (
     <motion.button
       initial={{ scale: 1, position: "relative", zIndex: 1 }}
@@ -16,13 +16,13 @@ export const GradationIconButton = ({ url, color, onClick }) => {
       onClick={onClick}
       style={{ outline: "none" }}
     >
-      <img src={url} alt="icon" width={24} height={24} />
+      {children}
     </motion.button>
   );
 };
 
 GradationIconButton.propTypes = {
-  url: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
   color: PropTypes.oneOf(["gray", "red", "white", "none"]),
   onClick: PropTypes.func,
 };

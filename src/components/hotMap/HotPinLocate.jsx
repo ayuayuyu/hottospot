@@ -15,7 +15,7 @@ function HotPinLocate({ setIsOpen, setPosition }) {
 
   const locationArr = Object.values(location.locations);
 
-  const handleOpen = (location) => {
+  const handleOpen = (location,index) => {
     setIsOpen(true);
     setPosition({
       latitude: location.latitude,
@@ -57,7 +57,7 @@ function HotPinLocate({ setIsOpen, setPosition }) {
 
   return (
     <div>
-      {locationArr.map((location) => {
+      {locationArr.map((location,index) => {
         //setPosition({latitude:location.latitude,longitude:location.longitude})
 
         return (
@@ -66,7 +66,7 @@ function HotPinLocate({ setIsOpen, setPosition }) {
               position={[location.latitude, location.longitude]}
               icon={Icon(location)}
               key={location.locationId}
-              eventHandlers={{ click: () => handleOpen(location) }}
+              eventHandlers={{ click: () => handleOpen(location,index) }}
             />
           </>
         );

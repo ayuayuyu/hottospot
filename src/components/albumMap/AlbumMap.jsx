@@ -18,19 +18,14 @@ import HotPinLocate from "../hotMap/HotPinLocate";
 import AlbumPinLocate from "./AlbumPinLocate";
 import HotModalSheet from "../hotModalSheet/HotModalSheet";
 
-const AlbumMap = ({ latitude, longitude }) => {
+const AlbumMap = () => {
   const [isOpen, setIsOpen] = useState(false); //マーカー選択
-  const [position, setPosition] = useState({
-    latitude: null,
-    longitude: null,
-    name: null,
-  }); //選択したマーカーの緯度と経度
 
-  if (latitude === null || longitude === null) {
-    return <p>現在地を取得中...</p>;
-  }
+  const [position, setPosition] = useState({ latitude: null, longitude: null });
 
-  const center = [latitude, longitude];
+  
+
+  const center = [35.1848136, 137.1148777];
 
   return (
     <div>

@@ -16,6 +16,7 @@ import { Box, Modal, Typography } from "@mui/material";
 import AlbumModalSheet from "./AlbumModalSheet";
 import HotPinLocate from "../hotMap/HotPinLocate";
 import AlbumPinLocate from "./AlbumPinLocate";
+import HotModalSheet from "../hotModalSheet/HotModalSheet";
 
 const AlbumMap = ({ latitude, longitude }) => {
   const [isOpen, setIsOpen] = useState(false); //マーカー選択

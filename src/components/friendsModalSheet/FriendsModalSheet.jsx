@@ -1,6 +1,7 @@
 import React from "react";
-import { Icon } from "@iconify/react/dist/iconify.js";
+
 import styles from "./friendsModalSheet.Module.scss";
+import { Icon } from "@iconify/react/dist/iconify.js";
 
 function FriendsModalSheet() {
   const friendsList = [

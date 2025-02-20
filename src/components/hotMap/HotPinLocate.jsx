@@ -5,7 +5,7 @@ import L from "leaflet";
 import blueicon from "../../../public/img/blueIcon.png";
 import greenicon from "../../../public/img/greenIcon.png";
 import redicon from "../../../public/img/redIcon.png";
-import fireicon from "../../../public/img/fireIcon.png"
+import fireicon from "../../../public/img/fireIcon.png";
 
 import "leaflet.awesome-markers/dist/leaflet.awesome-markers.css";
 import "leaflet.awesome-markers";
@@ -22,25 +22,30 @@ function HotPinLocate({ setIsOpen, setPosition }) {
       longitude: location.longitude,
       name: location.name,
     });
+    console.log("location", location.locationId);
+    
   };
 
-
-
   function Icon(location) {
-  
-    const showIcon = 
-    location.likeCount < 50 ? blueicon:
-    location.likeCount >= 50 && location.likeCount < 100 ? greenicon:
-    location.likeCount >= 100 && location.likeCount < 200 ? redicon:fireicon;
-    
+    const showIcon =
+      location.likeCount < 50
+        ? blueicon
+        : location.likeCount >= 50 && location.likeCount < 100
+        ? greenicon
+        : location.likeCount >= 100 && location.likeCount < 200
+        ? redicon
+        : fireicon;
+
     return L.divIcon({
       className: "custom-marker",
       html: `
-            <div style="position: relative; text-align: center;">
+             <div style="position: relative; text-align: center;">
               <img src=${showIcon} style="width: 50px; height: 50px;" />
-              <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+              <div style="
+              transform: translateY(-90%);
+              color:white;
                 display: flex; top:16px; justify-content: center;
-                color: white; font-weight: bold; font-size: 12px;">
+                 font-weight: bold; font-size: 12px;">
                 ${location.likeCount}
               </div>
             </div>
@@ -48,7 +53,6 @@ function HotPinLocate({ setIsOpen, setPosition }) {
       iconSize: [50, 50],
       iconAnchor: [25, 25],
     });
- 
   }
 
   return (

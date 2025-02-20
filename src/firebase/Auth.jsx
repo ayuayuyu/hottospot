@@ -10,8 +10,12 @@ import SignUp from './SignUp/SignUp';
 import AddFriend from './friend/AddFriend';
 import QrCodeGeneratorUid from './friend/QrcodeGeneratorUid';
 import ShareUid from './friend/ShareUid';
+import formatLike from './getTable/formatLike';
+import UploadImg from './uploadPhoto/UploadImg';
+import QrcodeScannerUid from './friend/QrcodeScannerUid';
 
 const Auth = () => {
+  formatLike();
   const [user, loading, error] = useAuthState(auth);
   const [currentPage, setCurrentPage] = useState('home');
 
@@ -57,6 +61,8 @@ const Auth = () => {
       <ShareUid />
       <AddFriend />
       <QrCodeGeneratorUid />
+      <UploadImg locationId={'cd182e59-58b4-4909-91cf-365977d9c89e'} />
+      <QrcodeScannerUid />
     </>
   );
 };

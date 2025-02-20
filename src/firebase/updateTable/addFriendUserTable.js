@@ -3,6 +3,7 @@ import { doc, getDoc, updateDoc, arrayUnion } from 'firebase/firestore';
 
 const addFriendUserTable = async (friendUid) => {
   const currentUserId = auth.currentUser.uid;
+  console.log(`addFriendUserTable UID : ${friendUid}`);
 
   try {
     const currentUserRef = doc(db, 'users', currentUserId);

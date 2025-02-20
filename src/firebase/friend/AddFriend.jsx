@@ -11,13 +11,21 @@ const AddFriend = () => {
       setMessage('UID を入力してください');
       return;
     }
-    const result = await addFriendUserTable(friendUid);
-    console.log(`友達登録完了: ${result}`);
+    try {
+      //友達の追加
+      await addFriendUserTable(friendUid);
+      setMessage(`友達登録完了`);
+      setFriendUid(''); // 入力欄をクリア
+    } catch (error) {
+      setMessage('エラーが発生しました: ' + error.message);
+    }
   };
 
   return (
     <div>
-      <h2>フレンド登録</h2>
+      <div>
+        <p>フレンド登録</p>
+      </div>
       <input
         type="text"
         value={friendUid}

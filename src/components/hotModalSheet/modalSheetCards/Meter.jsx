@@ -18,32 +18,31 @@ export const Meter = () => {
 
   return (
     <div className={styles.container}>
-      <div>場所の評価をつけよう！</div>
-      {/* プラスボタン */}
-      <GradationIconButton
-        onClick={increment}
-        color="white"
-        url="https://api.iconify.design/heroicons:plus-16-solid.svg?color=%23ff6085"
-      >
+      <div>場所の評価をつけよう</div>
+      {/* マイナスボタン */}
+      <GradationIconButton onClick={decrement} color="white">
         <Icon
-          icon="heroicons:plus-16-solid"
+          icon="heroicons:minus-16-solid"
           style={{
             fontSize: "24px",
             color: "#FF6085",
           }}
         />
       </GradationIconButton>
+      <Icon
+        icon="heroicons:heart-16-solid"
+        style={{
+          fontSize: "24px",
+          color: "#ffffff",
+        }}
+      />
 
-      <div>{likes}/10</div>
+      <div className={styles.likes}>{likes}/10</div>
 
-      {/* マイナスボタン */}
-      <GradationIconButton
-        onClick={decrement}
-        color="white"
-        url="https://api.iconify.design/heroicons:minus-16-solid.svg?color=%23ff6085"
-      >
+      {/* プラスボタン */}
+      <GradationIconButton onClick={increment} color="white">
         <Icon
-          icon="heroicons:minus-16-solid"
+          icon="heroicons:plus-16-solid"
           style={{
             fontSize: "24px",
             color: "#FF6085",

@@ -19,7 +19,7 @@ function RouteButtons() {
         position: "fixed",
         zIndex: 10,
         bottom: "24px",
-        left: "24px",
+        left: "18px",
       }}
     >
       {/* 火のアイコンボタン */}

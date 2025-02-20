@@ -3,6 +3,7 @@ import { GradationIconButton } from "./../layout/GradationIconButton";
 import PropTypes from "prop-types";
 import { Icon } from "@iconify/react";
 import { useNavigate } from "react-router-dom";
+import { ReactSVG } from "react-svg";
 
 export const PageTitle = ({ pageName, children }) => {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ export const PageTitle = ({ pageName, children }) => {
         <span className={styles.description}>{children}</span>
       </div>
       <div className={styles.imgContainer}>
-        <img src="/img/backfire.svg" alt="icon" width={220} height={220} />
+        <ReactSVG src="/img/backfire.svg" alt="icon" width={220} height={220} />
       </div>
     </div>
   );

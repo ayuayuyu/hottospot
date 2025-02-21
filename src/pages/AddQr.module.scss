@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+JP:wght@100..900&display=swap");
+
+.allContainer {
+  width: 100%;
+}
+
+.container {
+  margin-top: 350px;
+  color: #415465;
+}
+
+.code {
+  margin-top: 30px;
+  border: 15px solid #f3f7fb;
+  background-color: #f3f7fb;
+  font-size: 20px;
+  color: #415465;
+  font-family: "Noto Sans JP", serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.uid {
+  margin-top: 70px;
+  margin-left: 100px;
+  margin-right: 90px;
+  width: 320px;
+  height: 50px;
+  font-size: 30px;
+}

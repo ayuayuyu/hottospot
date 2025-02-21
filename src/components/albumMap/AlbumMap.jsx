@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import 'leaflet/dist/leaflet.css';
-import '../../pages/Map.css';
-import { useEffect } from 'react';
-import { Drawer } from 'vaul';
+import React, { useState } from "react";
+import "leaflet/dist/leaflet.css";
+import "../../pages/Map.css";
+import { useEffect } from "react";
+import { Drawer } from "vaul";
 
 import {
   Circle,
@@ -11,16 +11,16 @@ import {
   Marker,
   Popup,
   TileLayer,
-} from 'react-leaflet';
-import { Box, Modal, Typography } from '@mui/material';
-import AlbumModalSheet from './AlbumModalSheet';
-import HotPinLocate from '../hotMap/HotPinLocate';
-import AlbumPinLocate from './AlbumPinLocate';
-import HotModalSheet from '../hotModalSheet/HotModalSheet';
-import getAllLocation from '../../firebase/getTable/getAllLocation';
+} from "react-leaflet";
+import { Box, Modal, Typography } from "@mui/material";
+import AlbumModalSheet from "./AlbumModalSheet";
+import HotPinLocate from "../hotMap/HotPinLocate";
+import AlbumPinLocate from "./AlbumPinLocate";
+import HotModalSheet from "../hotModalSheet/HotModalSheet";
+import getAllLocation from "../../firebase/getTable/getAllLocation";
 
-const AlbumMap = ({ latitude, longitude }) => {
-  const [locationData, setLocationData] = useState(null);
+const AlbumMap = ({latitude,longitude,name}) => {
+  const [locationData, setLocationData] = useState([]);
   const [isOpen, setIsOpen] = useState(false); //マーカー選択
   const [position, setPosition] = useState({
     latitude: null,
@@ -32,10 +32,11 @@ const AlbumMap = ({ latitude, longitude }) => {
     const fetchData = async () => {
       try {
         const data = await getAllLocation();
-        console.log('locationData:', data); // デバッグ用
-        setLocationData(data);
+        console.log("locationData:", data); // デバッグ用
+        setLocationData(data || []);
       } catch (error) {
-        console.error('Error fetching location data:', error);
+        console.error("Error fetching location data:", error);
+        setLocationData([]);
       }
     };
 

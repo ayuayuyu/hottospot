@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,800;1,800&family=Noto+Sans+JP:wght@100..900&display=swap");
+
+.title {
+  position: absolute;
+  top: 100px;
+  width: 100%;
+}
+.explanation {
+  position: relative;
+  font-family: "Montserrat", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  margin-top: 20px;
+  color: white;
+}
+.explanation-hello {
+  font-family: "Noto Sans JP", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+.sign {
+  position: absolute;
+  z-index: 40;
+  top: 400px;
+  width: 100%;
+}
+.sign-in {
+  display: flex;
+  text-alighn: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 100%;
+  margin-top:20px;
+}
+.sign-up {
+  display: flex;
+  top: 10px;
+  position: relative;
+  justify-content: center;
+  margin: 0 auto;
+  width: 80%;
+}

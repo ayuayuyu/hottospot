@@ -18,17 +18,47 @@ function Top() {
 
   return (
     <div>
-      <button onClick={handleRanking} style={{ zIndex: 30, position:"absolute", left: "50px", width:"30%"}}>
+      <Link to="/login" style={{ zIndex: 10 }} />
+
+      <button
+        onClick={handleRanking}
+        style={{
+          zIndex: 30,
+          position: "absolute",
+          left: "50px",
+          width: "30%",
+          top: "50%",
+        }}
+      >
         Ranking
       </button>
-      <button onClick={handleMap} style={{ zIndex: 30, position:"absolute",right: "50px", width:"30%"}}>Map</button>
+      <button
+        onClick={handleMap}
+        style={{
+          zIndex: 30,
+          position: "absolute",
+          right: "50px",
+          width: "30%",
+          top: "50%",
+        }}
+      >
+        Map
+      </button>
 
-      
-        <Link to="/login" style={{ zIndex: 10 }}>
+      <Link to="/login" style={{ zIndex: 10 }}>
+        <div
+          style={{
+            position: "absolute",
+            top: "12rem",
+            right: 0,
+            left: 0,
+            margin: "0 auto",
+          }}
+        >
           <Title />
-          <Background />
-        </Link>
-      
+        </div>
+        <Background />
+      </Link>
     </div>
   );
 }

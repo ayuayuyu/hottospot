@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { IconButton } from "./IconButton";
+import { GradationIconButton } from "./../../../layout/GradationIconButton";
 import styles from "./Meter.module.scss";
+import { Icon } from "@iconify/react";
 
 export const Meter = () => {
   const [likes, setLikes] = useState(0);
@@ -17,22 +18,37 @@ export const Meter = () => {
 
   return (
     <div className={styles.container}>
-      <div>場所の評価をつけよう！</div>
-      {/* プラスボタン */}
-      <IconButton
-        onClick={increment}
-        color="white"
-        url="https://api.iconify.design/heroicons:plus-16-solid.svg?color=%23ff6085"
-      />
-
-      <div>{likes}/10</div>
-
+      <div>場所の評価をつけよう</div>
       {/* マイナスボタン */}
-      <IconButton
-        onClick={decrement}
-        color="white"
-        url="https://api.iconify.design/heroicons:minus-16-solid.svg?color=%23ff6085"
+      <GradationIconButton onClick={decrement} color="white">
+        <Icon
+          icon="heroicons:minus-16-solid"
+          style={{
+            fontSize: "24px",
+            color: "#FF6085",
+          }}
+        />
+      </GradationIconButton>
+      <Icon
+        icon="heroicons:heart-16-solid"
+        style={{
+          fontSize: "24px",
+          color: "#ffffff",
+        }}
       />
+
+      <div className={styles.likes}>{likes}/10</div>
+
+      {/* プラスボタン */}
+      <GradationIconButton onClick={increment} color="white">
+        <Icon
+          icon="heroicons:plus-16-solid"
+          style={{
+            fontSize: "24px",
+            color: "#FF6085",
+          }}
+        />
+      </GradationIconButton>
     </div>
   );
 };

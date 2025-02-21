@@ -1,0 +1,27 @@
+.meinContents {
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  gap: 12px;
+}
+
+.rightContents {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.imageBox {
+  width: 90%;
+  overflow: scroll;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 auto;
+}
+
+.text {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 10px 0 10px 5%;
+}

@@ -1,98 +1,33 @@
-import React from "react";
-import { Global } from "@emotion/react";
-import { styled } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
-import { grey } from "@mui/material/colors";
-import Skeleton from "@mui/material/Skeleton";
-import SwipeableDrawer from "@mui/material/SwipeableDrawer";
-import { Typography } from "@mui/material";
-import { RankingCard } from "../ranking/RankingCard";
+import { motion } from "framer-motion";
+import styles from "./HotModalSheet.module.scss";
+import PropTypes from "prop-types";
+import { Meter } from "./modalSheetCards/Meter";
+import { LocationRanking } from "./modalSheetCards/LocationRanking";
+import { FriendsVisited } from "./modalSheetCards/FriendsVisited";
+import { LocationImage } from "./modalSheetCards/LocationImage";
 
-
-const Root = styled("div")(({ theme }) => ({
-  height: "100%",
-  backgroundColor: grey[100],
-  ...theme.applyStyles("dark", {
-    backgroundColor: theme.palette.background.default,
-  }),
-}));
-
-const StyledBox = styled("div")(({ theme }) => ({
-  backgroundColor: "#fff",
-  ...theme.applyStyles("dark", {
-    backgroundColor: grey[800],
-  }),
-}));
-
-const Puller = styled("div")(({ theme }) => ({
-  width: 30,
-  height: 6,
-  backgroundColor: grey[300],
-  borderRadius: 3,
-  position: "absolute",
-  top: 8,
-  left: "calc(50% - 15px)",
-  ...theme.applyStyles("dark", {
-    backgroundColor: grey[900],
-  }),
-}));
-
-function HotModalSheet({ setIsOpen, isOpen, setPosition, position }) {
-  const drawerBleeding = 56;
-
+function HotModalSheet({ setPosition, position }) {
+  // const [disableTransform, setDisableTransform] = useState(false);
   return (
-    <div>
-      <Root>
-        <Global
-          styles={{
-            ".MuiDrawer-root > .MuiPaper-root": {
-              height: `calc(40% - ${drawerBleeding}px)`, ///////////// 高さの変更
-              overflow: "visible",
-            },
-          }}
-        />
-        <SwipeableDrawer
-          anchor="bottom"
-          open={isOpen}
-          onClose={() => setIsOpen(false)}
-          onOpen={() => setIsOpen(true)}
-          swipeAreaWidth={drawerBleeding}
-          disableSwipeToOpen={false}
-          ModalProps={{
-            keepMounted: true,
-          }}
-          //BackdropProps={{ invisible: true }}
-        >
-          <StyledBox
-            sx={{
-              position: "absolute",
-              top: -drawerBleeding,
-              borderTopLeftRadius: 8,
-              borderTopRightRadius: 8,
-              visibility: "visible",
-              right: 0,
-              left: 0,
-            }}
-          >
-            <Puller />
-            <Typography sx={{ p: 2, color: "text.secondary" }}>
-              {position.name}で撮った写真
-            </Typography>
-            <RankingCard
-              ranking="1"
-              location="名古屋城"
-              heartsCount="12402"
-              url="/greenIcon.png"
-              onClick
-            />
-          </StyledBox>
-          <StyledBox
-            sx={{ px: 2, pb: 2, height: "100%", overflow: "auto" }}
-          ></StyledBox>
-        </SwipeableDrawer>
-      </Root>
-    </div>
+    <>
+      <div className={styles.dragHandle} />
+      <div className={styles.meinContents}>
+        <Meter />
+        <div style={{ display: "flex", gap: "10px" }}>
+          <LocationImage />
+          <div className={styles.rightContents}>
+            <LocationRanking />
+            <FriendsVisited />
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
+
+HotModalSheet.propTypes = {
+  setIsOpen: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+};
 
 export default HotModalSheet;

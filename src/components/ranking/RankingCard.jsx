@@ -1,5 +1,6 @@
 import styles from "./RankingCard.module.scss";
 import PropTypes from "prop-types";
+import { ReactSVG } from "react-svg";
 
 export const RankingCard = ({ ranking, location, heartsCount, url }) => {
   return (
@@ -20,7 +21,7 @@ export const RankingCard = ({ ranking, location, heartsCount, url }) => {
         <div className={styles.right}>
           <div>{location}</div>
           <div className={styles.likesContainer}>
-            <img src="/img/Heart.svg" alt="icon" width={24} height={24} />
+            <ReactSVG src="/img/Heart.svg" alt="icon" width={24} height={24} />
             <div className={styles.gradationText}>{heartsCount}</div>
           </div>
         </div>

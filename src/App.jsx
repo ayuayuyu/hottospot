@@ -9,7 +9,7 @@ import "./App.css";
 import Auth from "./firebase/Auth";
 import Profile from "./pages/Profile";
 import Element from "./pages/Element";
-
+import AddFriends from "./pages/AddFriends";
 
 function App() {
   return (
@@ -26,6 +26,7 @@ function App() {
           <Route path="*" element={<h1>Not Found Page</h1>} />
           <Route path="/sign" element={<Element />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/addfriends" element={<AddFriends />} />
         </Routes>
       </BrowserRouter>
     </>

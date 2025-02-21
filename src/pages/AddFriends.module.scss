@@ -1,0 +1,15 @@
+.pagetitle {
+  position: absolute;
+  z-index: 10;
+}
+
+.upper {
+  margin: 0 auto;
+  margin-top: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  display: "flex";
+  flex-direction: "column";
+  width: 80%;
+}

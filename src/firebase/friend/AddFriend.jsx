@@ -1,23 +1,23 @@
-import { useState } from 'react';
-import addFriendUserTable from '../updateTable/addFriendUserTable';
+import { useState } from "react";
+import addFriendUserTable from "../updateTable/addFriendUserTable";
 
 //フレンドの追加をする(snsで送られてきたuidを打つ)
 const AddFriend = () => {
-  const [friendUid, setFriendUid] = useState('');
-  const [message, setMessage] = useState('');
+  const [friendUid, setFriendUid] = useState("");
+  const [message, setMessage] = useState("");
 
   const handleAddFriend = async () => {
     if (!friendUid) {
-      setMessage('UID を入力してください');
+      setMessage("UID を入力してください");
       return;
     }
     try {
       //友達の追加
       await addFriendUserTable(friendUid);
       setMessage(`友達登録完了`);
-      setFriendUid(''); // 入力欄をクリア
+      setFriendUid(""); // 入力欄をクリア
     } catch (error) {
-      setMessage('エラーが発生しました: ' + error.message);
+      setMessage("エラーが発生しました: " + error.message);
     }
   };
 

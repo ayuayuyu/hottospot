@@ -6,8 +6,7 @@ const getLike = async () => {
     const likeRef = collection(db, 'likes');
     const snapShot = await getDocs(likeRef);
     const likeData = snapShot.docs.map((doc) => ({ ...doc.data() }));
-    console.log('location:', likeData);
-    //観光地全てを配列で返す
+    //いいねの全てを返す
     return likeData;
   } catch (error) {
     console.log('データの取得エラー:', error.code, error.message);

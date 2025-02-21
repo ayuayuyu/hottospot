@@ -23,6 +23,7 @@ const formatLike = async () => {
         name: userData.name || '不明',
         icon: userData.profileImage || defalutIcon,
         like: like.like,
+        timestamp: like.timestamp,
         place: locationData.name || '不明',
         latitude: locationData.latitude || 0,
         longitude: locationData.longitude || 0,

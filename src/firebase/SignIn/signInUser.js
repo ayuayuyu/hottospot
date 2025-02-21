@@ -12,6 +12,9 @@ const signInUser = async (email, password) => {
     await signInWithEmailAndPassword(auth, email, password);
     console.log('サインイン');
   } catch (error) {
+    if (error.code === 'auth/invalid-credential') {
+      throw new Error('パスワードが違います');
+    }
     console.error('サインインエラー:', error.code, error.message);
     return error.message;
   }

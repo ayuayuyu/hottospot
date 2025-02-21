@@ -3,13 +3,23 @@ import { FormInput } from "../../layout/FormInput";
 import { label } from "motion/react-client";
 import styls from "./Sign.module.scss";
 import { GradationButton } from "../../layout/GradationButton";
+import { useState } from "react";
 
-function Sign(login) {
+function Sign({login, setLogin}) {
   const { register, handleSubmit } = useForm();
+  //login={login}
+  //const [login,setLogin] = useState(false)
+  
+
+  console.log("login", login);
 
   const onSubmit = (data) => {
     console.log("data", data);
   };
+
+  // const handleOpen = () => {
+  //   setLogin(false)
+  // }
 
   const signUpSendForm = [
     { label: "name", fieldName: "name" },
@@ -25,10 +35,10 @@ function Sign(login) {
 
   return (
     <div className={styls.signStyle}>
-      {login.login ? (
+      {login ? (
         <div>
           <div className={styls.createAccount}>サインイン</div>
-          <form onSubmit={handleSubmit(onSubmit)} className={styls.signInForm}>
+          <form className={styls.signInForm}>
             {signInSendForm.map((form, index) => {
               return (
                 <div key={index} className={styls.signInCard}>
@@ -42,33 +52,43 @@ function Sign(login) {
               );
             })}
             {/* <button type="submit" className={styls.signInButton}>サインイン</button> */}
-            <div className={styls.signInButton}>
+            <div
+              className={styls.signInButton}
+              onClick={handleSubmit(onSubmit)}
+            >
               <GradationButton color="red">ログイン</GradationButton>
             </div>
           </form>
         </div>
       ) : (
         <>
+          <div>
           <div className={styls.createAccount}>アカウントの作成</div>
-          <form onSubmit={handleSubmit(onSubmit)}  className={styls.signInForm}>
-            {signUpSendForm.map((form, index) => {
-              return (
-                <div key={index} className={styls.signUpCard}>
+            <form className={styls.signInForm}>
+              {signUpSendForm.map((form, index) => {
+                return (
+                  <div key={index} className={styls.signUpCard}>
                   <FormInput
-                    key={index}
                     label={form.label}
                     register={register}
                     fieldName={form.fieldName}
                   />
                 </div>
-              );
-            })}
-            <div className={styls.signUpButton}>
-              <GradationButton color="red">作成</GradationButton>
-            </div>
-          </form>
+                );
+              })}
+              <div
+                className={styls.signInButton}
+                onClick={handleSubmit(onSubmit)}
+              >
+                <GradationButton color="red">ログイン</GradationButton>
+              </div>
+            </form>
+            
+          </div>
         </>
       )}
+
+      
       {/* <Title /> */}
     </div>
   );

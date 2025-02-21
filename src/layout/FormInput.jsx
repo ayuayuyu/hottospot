@@ -12,6 +12,6 @@ export const FormInput = ({ label, register, fieldName }) => {
 
 FormInput.propTypes = {
   label: PropTypes.string.isRequired,
-  register: PropTypes.string.isRequired,
+  register: PropTypes.func.isRequired,
   fieldName: PropTypes.string.isRequired,
 };

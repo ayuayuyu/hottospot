@@ -16,14 +16,14 @@ export const LocationRanking = () => {
             color: "#ffffff",
           }}
         />
-        <div className={styles.imgContainer}>
-          <ReactSVG
-            src="/img/backfire.svg"
-            alt="icon"
-            width={100}
-            height={100}
-          />
-        </div>
+        <ReactSVG
+          className={styles.svg}
+          src="/img/backfire.svg"
+          wrapper="span"
+          alt="icon"
+          width={100}
+          height={100}
+        />
       </div>
     </div>
   );

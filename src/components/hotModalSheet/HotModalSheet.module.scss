@@ -1,32 +1,14 @@
-.container {
-  width: 100%;
-  background: #ffffff;
-  height: 557px;
-  border-radius: 30px 30px 0px 0px;
-  color: #ff6085;
-  z-index: 10;
-  position: fixed;
+.meinContents {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  bottom: 0;
-  box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.14);
-  overflow: hidden;
-}
-
-.meinContents {
   width: 90vw;
+  gap: 12px;
 }
 
-.dragHandle {
-  margin-top: 18px;
-  width: 70px;
-  height: 5px;
-  background-color: #e5e7eb;
-  border-radius: 100px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 18px;
+.rightContents {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .imageBox {
@@ -42,12 +24,4 @@
   font-size: 24px;
   font-weight: bold;
   padding: 10px 0 10px 5%;
-}
-
-.image {
-  width: 110px;
-  height: 110px;
-  border-radius: 10px;
-  object-fit: cover;
-  object-position: "right";
 }

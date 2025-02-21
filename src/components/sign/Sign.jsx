@@ -7,19 +7,11 @@ import { useState } from "react";
 
 function Sign({login, setLogin}) {
   const { register, handleSubmit } = useForm();
-  //login={login}
-  //const [login,setLogin] = useState(false)
-  
 
-  console.log("login", login);
 
   const onSubmit = (data) => {
     console.log("data", data);
   };
-
-  // const handleOpen = () => {
-  //   setLogin(false)
-  // }
 
   const signUpSendForm = [
     { label: "name", fieldName: "name" },

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import CurrentLocateion from "../components/albumMap/AlbumMap";
 import AlbumMap from "../components/albumMap/AlbumMap";
 
 function Map() {

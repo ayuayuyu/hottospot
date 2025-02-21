@@ -1,4 +1,4 @@
-import styles from "./Input.module.scss";
+import styles from "./FormInput.module.scss";
 import PropTypes from "prop-types";
 
 export const FormInput = ({ label, register, fieldName }) => {

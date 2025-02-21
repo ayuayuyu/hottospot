@@ -1,21 +1,21 @@
-import React from "react";
-import { CircleMarker, Marker } from "react-leaflet";
+import { useState, useEffect } from 'react';
 import locations from "/api/locations";
-import L from "leaflet";
-import blueicon from "../../../public/img/blueIcon.png";
-import greenicon from "../../../public/img/greenIcon.png";
-import redicon from "../../../public/img/redIcon.png";
-import fireicon from "../../../public/img/fireIcon.png";
+import { CircleMarker, Marker } from 'react-leaflet';
+import L from 'leaflet';
+import blueicon from '../../../public/img/blueIcon.png';
+import greenicon from '../../../public/img/greenIcon.png';
+import redicon from '../../../public/img/redIcon.png';
+import fireicon from '../../../public/img/fireIcon.png';;
 
-import "leaflet.awesome-markers/dist/leaflet.awesome-markers.css";
-import "leaflet.awesome-markers";
+import 'leaflet.awesome-markers/dist/leaflet.awesome-markers.css';
+import 'leaflet.awesome-markers';
 
-function HotPinLocate({ setIsOpen, setPosition }) {
-  const location = locations;
+function HotPinLocate({ setIsOpen, setPosition, locationData }) {
+  const [locationArr, setLocationArr] = useState([]);
 
   const locationArr = Object.values(location.locations);
 
-  const handleOpen = (location,index) => {
+  const handleOpen = (location) => {
     setIsOpen(true);
     setPosition({
       latitude: location.latitude,
@@ -37,7 +37,7 @@ function HotPinLocate({ setIsOpen, setPosition }) {
         : fireicon;
 
     return L.divIcon({
-      className: "custom-marker",
+      className: 'custom-marker',
       html: `
              <div style="position: relative; text-align: center;">
               <img src=${showIcon} style="width: 50px; height: 50px;" />
@@ -57,20 +57,14 @@ function HotPinLocate({ setIsOpen, setPosition }) {
 
   return (
     <div>
-      {locationArr.map((location,index) => {
-        //setPosition({latitude:location.latitude,longitude:location.longitude})
-
-        return (
-          <>
-            <Marker
-              position={[location.latitude, location.longitude]}
-              icon={Icon(location)}
-              key={location.locationId}
-              eventHandlers={{ click: () => handleOpen(location,index) }}
-            />
-          </>
-        );
-      })}
+      {locationArr.map((location) => (
+        <Marker
+          position={[location.latitude, location.longitude]}
+          icon={Icon(location)}
+          key={location.locationId}
+          eventHandlers={{ click: () => handleOpen(location) }}
+        />
+      ))}
     </div>
   );
 }

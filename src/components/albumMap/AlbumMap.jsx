@@ -17,15 +17,37 @@ import AlbumModalSheet from "./AlbumModalSheet";
 import HotPinLocate from "../hotMap/HotPinLocate";
 import AlbumPinLocate from "./AlbumPinLocate";
 import HotModalSheet from "../hotModalSheet/HotModalSheet";
+import getAllLocation from "../../firebase/getTable/getAllLocation";
 
-const AlbumMap = () => {
+const AlbumMap = ({latitude,longitude,name}) => {
+  const [locationData, setLocationData] = useState([]);
   const [isOpen, setIsOpen] = useState(false); //マーカー選択
+  const [position, setPosition] = useState({
+    latitude: null,
+    longitude: null,
+    name: null,
+  }); //選択したマーカーの緯度と経度
 
-  const [position, setPosition] = useState({ latitude: null, longitude: null });
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getAllLocation();
+        console.log("locationData:", data); // デバッグ用
+        setLocationData(data || []);
+      } catch (error) {
+        console.error("Error fetching location data:", error);
+        setLocationData([]);
+      }
+    };
 
-  
+    fetchData();
+  }, []); // 初回のみ取得
 
-  const center = [35.1848136, 137.1148777];
+  if (latitude === null || longitude === null) {
+    return <p>現在地を取得中...</p>;
+  }
+
+  const center = [latitude, longitude];
 
   return (
     <div>
@@ -37,7 +59,13 @@ const AlbumMap = () => {
         <Marker position={center} />
 
         {/* ここをAlbumPinLocateにしたらアルバムの画面に */}
-        <HotPinLocate setIsOpen={setIsOpen} setPosition={setPosition} />
+        {locationData && (
+          <HotPinLocate
+            setIsOpen={setIsOpen}
+            setPosition={setPosition}
+            locationData={locationData}
+          />
+        )}
       </MapContainer>
 
       {/* ここをAlbumModalSheetにしたらアルバムの画面に */}

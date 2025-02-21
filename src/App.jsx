@@ -4,6 +4,9 @@ import Top from "./pages/Top";
 import Map from "./pages/Map";
 import Ranking from "./pages/Ranking";
 import Login from "./pages/Login";
+import FriendsModalSheet from "./components/friendsModalSheet/FriendsModalSheet";
+import './App.css';
+import Auth from './firebase/Auth';
 
 function App() {
   return (
@@ -12,8 +15,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Top />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/auth" element={<Auth />} />
           <Route path="/map" element={<Map />} />
           <Route path="/ranking" element={<Ranking />} />
+          <Route path="/friendsmodal" element={<FriendsModalSheet />} />
           <Route path="*" element={<h1>Not Found Page</h1>} />
         </Routes>
       </BrowserRouter>

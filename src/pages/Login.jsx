@@ -6,7 +6,7 @@ function Login() {
   return (
     <div>
       <LoginPage/>
-      <Background/>
+      <div><Background/></div>
     </div>
   )
 }

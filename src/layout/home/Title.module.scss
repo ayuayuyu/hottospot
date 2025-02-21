@@ -1,14 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
-body {
-  margin: 0;
-  position: relative;
-  height: 100vh;
-  width: 100%;
-}
+// body {
+//   margin: 0;
+//   position: relative;
+//   height: 100vh;
+//   width: 100%;
+// }
 
-.image {
-  position: relative;
+.title{
+  position:absolute;
+  z-index: 40;
+  width: 100%;
 }
 
 .hottospot {
@@ -18,5 +20,7 @@ body {
   font-style: normal;
   font-size: 60px;
   color: white;
-
+  position:absolute;
+  z-index: 40;
+  width: 100%;
 }

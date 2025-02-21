@@ -7,6 +7,7 @@ import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import { RankingCard } from "../ranking/RankingCard";
 import Sign from "./Sign";
 
+
 const Root = styled("div")(({ theme }) => ({
   height: "100%",
   backgroundColor: grey[100],
@@ -22,21 +23,8 @@ const StyledBox = styled("div")(({ theme }) => ({
   }),
 }));
 
-//上の四角
-const Puller = styled("div")(({ theme }) => ({
-  width: 30,
-  height: 6,
-  backgroundColor: grey[300],
-  borderRadius: 3,
-  position: "absolute",
-  top: 8,
-  left: "calc(50% - 15px)",
-  ...theme.applyStyles("dark", {
-    backgroundColor: grey[900],
-  }),
-}));
 
-function SignInModal({ setIsOpen, isOpen, setPosition, position }) {
+function SignInModal({ setIsOpen, isOpen ,login}) {
   const drawerBleeding = 56;
 
   return (
@@ -61,8 +49,8 @@ function SignInModal({ setIsOpen, isOpen, setPosition, position }) {
             keepMounted: true,
           }}
         >
-          <StyledBox sx={{ px: 2, pb: 2, height: "100%", overflow: "auto" }}>
-            <Sign />
+          <StyledBox sx={{  height: "100%", overflow: "auto" }}>
+            <Sign login={login}/>
           </StyledBox>
         </SwipeableDrawer>
       </Root>

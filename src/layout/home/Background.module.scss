@@ -1,17 +1,15 @@
-body {
+.background {
     background:linear-gradient(to right, #f8508f, #F54A4C);
     height:100vh;
     width:100%;
     margin:0;
     position: relative; 
 }
-img{
+.fireImg{
     position:absolute;
     bottom: 0;
     left: 0;
     z-index:10;
+    width: 100%;
 }
-.fire-img{
-    width:100%;
-    
-}
+

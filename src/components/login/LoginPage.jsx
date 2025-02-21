@@ -9,28 +9,23 @@ import SignInModal from "../sign/SignInModal";
 
 function LoginPage() {
   const [isOpen, setIsOpen] = useState(false); //マーカー選択
-
+  const [login, setLogin] = useState(false); //trueだったらサインインの選択
   const [position, setPosition] = useState({ latitude: null, longitude: null });
 
   const handleSignIn = () => {
-    console.log("hello");
-    setIsOpen(true)
+    setIsOpen(true);
+    setLogin(true);
   };
   const handleSignUp = () => {
-    console.log("app");
+    setIsOpen(true);
+    setLogin(false);
   };
   return (
     <div>
-      <div
-        style={{
-          position: "absolute",
-          top: "15rem",
-          right: 0,
-          left: 0,
-          margin: "0 auto",
-        }}
-      >
+      <div className="title">
         <Title />
+      </div>
+      <div className="sign">
         <span className="explanation">
           HottoSpot<span className="explanation-hello">へようこそ</span>
         </span>
@@ -39,19 +34,14 @@ function LoginPage() {
             サインイン
           </WhiteButton>
         </div>
-        <div className="sign-out">
+        <div className="sign-up">
           <WhiteButton color="red" onClick={handleSignUp}>
             サインアップ
           </WhiteButton>
         </div>
       </div>
 
-      <SignInModal
-        setIsOpen={setIsOpen}
-        isOpen={isOpen}
-        setPosition={setPosition}
-        position={position}
-      />
+      <SignInModal login={login} setIsOpen={setIsOpen} isOpen={isOpen} />
     </div>
   );
 }

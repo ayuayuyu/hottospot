@@ -1,14 +1,12 @@
 import React from "react";
-import icon from "../../../public/img/icon.png"
-import "./Title.css"
+import icon from "../../../public/img/icon.png";
+import style from "./Title.module.scss";
 
 function Title() {
   return (
-    <div>
-      
-        <img src={icon} className="image" />
-        <div className="hottospot">Hottospot</div>
-      
+    <div className={style.title}>
+      <img src={icon} className={style.image} />
+      <div className={style.hottospot}>Hottospot</div>
     </div>
   );
 }

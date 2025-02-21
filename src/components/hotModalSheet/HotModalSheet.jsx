@@ -5,7 +5,6 @@ import { Meter } from "./modalSheetCards/Meter";
 import { LocationRanking } from "./modalSheetCards/LocationRanking";
 import { FriendsVisited } from "./modalSheetCards/FriendsVisited";
 import { LocationImage } from "./modalSheetCards/LocationImage";
-import ModalSheet from "../../layout/ModalSheet";
 
 function HotModalSheet({ setPosition, position }) {
   // const [disableTransform, setDisableTransform] = useState(false);

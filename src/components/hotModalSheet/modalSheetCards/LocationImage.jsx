@@ -1,6 +1,4 @@
-import { GradationIconButton } from "../../../layout/GradationIconButton";
 import styles from "./LocationImage.module.scss";
-import { Icon } from "@iconify/react";
 
 export const LocationImage = () => {
   const address = "〒460-0031 愛知県名古屋市中区本丸１−１";

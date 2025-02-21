@@ -50,7 +50,7 @@ function LoginPage() {
         </div>
       </div>
 
-      <div className={style.form} onClick={handleSignIn}>
+      <div className={style.form} >
         <ModalSheet setIsOpen={setIsOpen} isOpen={isOpen}>
           <Sign login={login} setLogin={setLogin} />
         </ModalSheet>

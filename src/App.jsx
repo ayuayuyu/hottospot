@@ -6,10 +6,7 @@ import Ranking from "./pages/Ranking";
 import Login from "./pages/Login";
 import FriendsModalSheet from "./components/friendsModalSheet/FriendsModalSheet";
 import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Auth from './firebase/Auth';
-import Top from './pages/Top';
-import Map from './pages/Map';
 
 function App() {
   return (

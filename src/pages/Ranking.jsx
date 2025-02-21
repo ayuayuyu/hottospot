@@ -18,6 +18,7 @@ function Ranking() {
       <RouteButtons />
       <div
         style={{
+          marginTop: "210px",
           display: "flex",
           flexDirection: "column",
           gap: "20px",

@@ -11,9 +11,8 @@ import 'leaflet.awesome-markers/dist/leaflet.awesome-markers.css';
 import 'leaflet.awesome-markers';
 
 function HotPinLocate({ setIsOpen, setPosition, locationData }) {
-  const [locationArr, setLocationArr] = useState([]);
 
-  const locationArr = Object.values(location.locations);
+  const locationArr = Object.values(locationData);
 
   const handleOpen = (location) => {
     setIsOpen(true);
@@ -22,7 +21,6 @@ function HotPinLocate({ setIsOpen, setPosition, locationData }) {
       longitude: location.longitude,
       name: location.name,
     });
-    console.log("location", location.locationId);
     
   };
 
@@ -42,7 +40,7 @@ function HotPinLocate({ setIsOpen, setPosition, locationData }) {
              <div style="position: relative; text-align: center;">
               <img src=${showIcon} style="width: 50px; height: 50px;" />
               <div style="
-              transform: translateY(-90%);
+              transform: translateY(-210%);
               color:white;
                 display: flex; top:16px; justify-content: center;
                  font-weight: bold; font-size: 12px;">

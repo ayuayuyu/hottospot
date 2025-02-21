@@ -22,9 +22,12 @@ function Profile() {
   console.log(`user:${user}`);
   const [users, loading, error] = useAuthState(auth);
   const [currentPage, setCurrentPage] = useState("home");
-  const handleClck = () => {
+  const friendcode = () => {
     return console.log("OK");
   };
+  const addfirends = () => {
+    return console.log("NG")
+  }
   const friendsList = [
     {
       id: 1,
@@ -80,12 +83,12 @@ function Profile() {
         <p className={styles.username}>{user.displayName}</p>
         <p className={styles.email}>{user.email}</p>
         <div className={styles.codobutton}>
-          <GradationButton color="red" onClick={handleClck}>
+          <GradationButton color="red" onClick={friendcode}>
             フレンドコード
           </GradationButton>
         </div>
         <div className={styles.addbutton}>
-          <GradationButton color="red" onClick={handleClck}>
+          <GradationButton color="red" onClick={addfirends}>
             フレンド追加
           </GradationButton>
         </div>

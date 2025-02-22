@@ -23,8 +23,8 @@ const getFriendIds = async () => {
 
   const friends = await Promise.all(
     friendRefs.map(async (friend) => {
-      const userSnap = await getDoc(friend);
-      const userData = userSnap.exists() ? userSnap.data() : null;
+      const userShop = await getDoc(friend);
+      const userData = userShop.exists() ? userShop.data() : null;
       if (!userData) return null;
       return userData.userId;
     }),

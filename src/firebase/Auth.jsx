@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import SignInGoole from './SignInGoogle';
 import SignOut from './SignOut/SignOut';
@@ -14,12 +14,24 @@ import formatLike from './getTable/formatLike';
 import UploadImg from './uploadPhoto/UploadImg';
 import QrcodeScannerUid from './friend/QrcodeScannerUid';
 import formatPhoto from './getTable/formatPhoto';
+import getFriendIds from './getTable/getFriendIds';
+import formatFriends from './getTable/formatFriends';
 
 const Auth = () => {
+  const [friendIds, setFriendIds] = useState([]);
   formatLike();
   formatPhoto();
+  formatFriends();
   const [user, loading, error] = useAuthState(auth);
   const [currentPage, setCurrentPage] = useState('home');
+
+  useEffect(() => {
+    if (loading) return;
+    (async () => {
+      const friendIds = await getFriendIds();
+      setFriendIds((fs) => [...friendIds, ...fs]);
+    })();
+  }, [loading]);
 
   if (loading) {
     return <p>読み込み中...</p>;

@@ -30,6 +30,7 @@ function AlbumModalSheet({ setPosition, position, isVisited, setIsVisited }) {
   useEffect(() => {
     async function photoLocate() {
       const list = await formatPhoto();
+      console.log("list",list)
       const getlist = list.map((l) => {
         console.log("list", l);
 

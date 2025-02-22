@@ -3,6 +3,9 @@ import "leaflet/dist/leaflet.css";
 import "../../pages/Map.css";
 import { useEffect } from "react";
 import { Drawer } from "vaul";
+import ModalWindow from "./../../layout/ModalWindow";
+import { modalWindowAtom } from "../../atoms/modalWindowAtom";
+import { useAtom } from "jotai";
 
 import {
   Circle,
@@ -35,6 +38,7 @@ const AlbumMap = ({ latitude, longitude, name }) => {
     longitude: null,
     name: null,
   }); //選択したマーカーの緯度と経度
+  const [modalWindowIsOpen, setModalWindowIsOpen] = useAtom(modalWindowAtom); //マーカー選択
 
   useEffect(() => {
     const fetchData = async () => {
@@ -63,14 +67,9 @@ const AlbumMap = ({ latitude, longitude, name }) => {
 
   return (
     <div>
-      {/* <GradationButton color="blue" onClick={handleClick}>
-        skdfja
-      </GradationButton> */}
-
       <div style={{ zIndex: "50", position: "absolute" }}>
         <RouteButtons />
       </div>
-
       <div style={{ zIndex: "10", position: "absolute" }}>
         <MapContainer center={center} zoom={13} scrollWheelZoom={false}>
           <TileLayer
@@ -89,9 +88,7 @@ const AlbumMap = ({ latitude, longitude, name }) => {
           )}
         </MapContainer>
       </div>
-
       {/* ここをAlbumModalSheetにしたらアルバムの画面に */}
-
       <div style={{ zIndex: "80", position: "absolute" }}>
         <ModalSheet isOpen={isOpen} setIsOpen={setIsOpen} >
           {

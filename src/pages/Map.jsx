@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
-import CurrentLocateion from "../components/albumMap/AlbumMap";
-import AlbumMap from "../components/albumMap/AlbumMap";
-import HotModalSheet from "./../components/hotModalSheet/HotModalSheet";
-import ModalSheet from "./../layout/ModalSheet";
-import { GradationButton } from "./../layout/GradationButton";
-import RouteButtons from "./../layout/RouteButtons";
+import HotMap from "../components/hotMap/HotMap";
+import RouteButtons from "../layout/RouteButtons";
+import { useAtomValue } from "jotai";
+import { motion } from "framer-motion";
+import { isHotModalAtom } from "../atoms/isHotModalAtom";
 
 function Map() {
   const [position, setPosition] = useState({ latitude: null, longitude: null });
-  const [isOpen, setIsOpen] = useState(false);
+  const isHotModal = useAtomValue(isHotModalAtom);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -17,15 +16,27 @@ function Map() {
     });
   }, []);
 
-  const handleClick = () => {
-    setIsOpen(open => !open)
-    console.log("open",isOpen)
-  }
-
+  const RouteButtonsAnimation = () => {
+    return (
+      <motion.div
+        inset={{
+          scale: 0,
+          opacity: 0,
+        }}
+        animation={{
+          scale: "100%",
+          opacity: "100%",
+        }}
+      >
+        <RouteButtons />
+      </motion.div>
+    );
+  };
 
   return (
     <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0 }}>
-      <AlbumMap latitude={position.latitude} longitude={position.longitude} />
+      <HotMap latitude={position.latitude} longitude={position.longitude} />
+      {isHotModal ? <></> : <RouteButtonsAnimation />}
     </div>
   );
 }

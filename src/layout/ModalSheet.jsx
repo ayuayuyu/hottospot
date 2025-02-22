@@ -2,9 +2,10 @@ import { motion } from "framer-motion";
 import styles from "./ModalSheet.module.scss";
 import PropTypes from "prop-types";
 
-function ModalSheet({ children, setIsOpen, isOpen }) {
+function ModalSheet({ children, setIsOpen, isOpen, height }) {
   return (
     <motion.div
+      style={{ height: `${height}px` }}
       className={styles.container}
       initial={{ y: "100%" }}
       animate={{ y: isOpen ? "0%" : "100%" }}
@@ -16,7 +17,8 @@ function ModalSheet({ children, setIsOpen, isOpen }) {
       dragConstraints={{ top: 0, bottom: "100%" }}
       dragElastic={0}
       onDragEnd={(_, info) => {
-        if (info.point.y > 0) setIsOpen(false);
+        if (info.velocity.y > 100) setIsOpen(false);
+        if (info.offset.y > 100) setIsOpen(false);
       }}
     >
       <div className={styles.dragHandle} />

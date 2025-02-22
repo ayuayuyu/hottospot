@@ -6,12 +6,9 @@ import styles from "./Profile.module.scss";
 // import { auth } from '../api/firebase';
 import { auth } from "../firebase/api/firebase";
 import defalutImg from "../../public/img/defalutIcon.png";
-import { motion } from "framer-motion";
 import { GradationButton } from "../layout/GradationButton";
-import { red } from "@mui/material/colors";
-import { Handle } from "vaul";
-import FriendsModalSheet from "../components/friendsModalSheet/FriendsModalSheet";
 import ProfileFriends from "../components/friendsModalSheet/ProfileFriends";
+import { useNavigate } from "react-router-dom";
 
 const getUserInfo = () => {
   return auth.currentUser;
@@ -22,11 +19,13 @@ function Profile() {
   console.log(`user:${user}`);
   const [users, loading, error] = useAuthState(auth);
   const [currentPage, setCurrentPage] = useState("home");
+  const navigate = useNavigate();
+
   const friendcode = () => {
-    return console.log("OK");
+    navigate("/addqr");
   };
   const addfirends = () => {
-    return console.log("NG");
+    navigate("/addfriends");
   };
   const friendsList = [
     {

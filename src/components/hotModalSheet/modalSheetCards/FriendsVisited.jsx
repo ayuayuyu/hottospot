@@ -1,16 +1,8 @@
 import styles from "./FriendsVisited.module.scss";
 import { Icon } from "@iconify/react";
 import { GradationIconButton } from "../../../layout/GradationIconButton";
-import FriendsModalSheet from "../../friendsModalSheet/FriendsModalSheet";
-import { useState } from "react";
 
-export const FriendsVisited = ({isVisited, setIsVisited}) => {
-  
-  const handleVisited = () => {
-    console.log("isVisited",isVisited)
-    //<FriendsModalSheet />
-    setIsVisited(false)
-  }
+export const FriendsVisited = () => {
   return (
     <div className={styles.container}>
       <div className={styles.title}>訪れた友達</div>
@@ -63,7 +55,10 @@ export const FriendsVisited = ({isVisited, setIsVisited}) => {
           </GradationIconButton>
         </div>
       </div>
-      <div className={styles.bottom} onClick={() => handleVisited()}>
+      <div
+        className={styles.bottom}
+         //onClick={() => handleVisited()}
+      >
         <span>詳しく見る</span>
         <Icon
           icon="heroicons:arrow-right-16-solid"

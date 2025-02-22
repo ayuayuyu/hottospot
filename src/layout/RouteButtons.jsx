@@ -17,7 +17,7 @@ function RouteButtons() {
         borderRadius: "50px",
         padding: "8px 16px",
         position: "fixed",
-        zIndex: 10,
+        zIndex: 200,
         bottom: "24px",
         left: "18px",
       }}
@@ -65,7 +65,7 @@ function RouteButtons() {
         <GradationIconButton
           color="gray"
           onClick={() => {
-            navigate("/ranking");
+            navigate("/albummap");
           }}
         >
           <Icon

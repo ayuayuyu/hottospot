@@ -71,7 +71,7 @@ function HotPinLocate({ setIsOpen, setPosition, locationData }) {
 HotPinLocate.propTypes = {
   setIsOpen: PropTypes.func.isRequired,
   setPosition: PropTypes.func.isRequired,
-  locationData: PropTypes.Object.isRequired,
+  locationData: PropTypes.object.isRequired,
 };
 
 export default HotPinLocate;

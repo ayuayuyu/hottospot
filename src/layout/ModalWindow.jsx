@@ -5,34 +5,42 @@ import { GradationIconButton } from "./GradationIconButton";
 import { Icon } from "@iconify/react";
 
 function ModalWindow({ children, setIsOpen, isOpen }) {
+  const handleBackgroundClick = () => {
+    // 背景がクリックされたときにモーダルを閉じる
+    setIsOpen(false);
+  };
   return (
     <>
       {isOpen ? (
-        <motion.div
-          className={styles.container}
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: "100%", scale: "100%" }}
-          // transition={{
-          //   stiffness: 300,
-          // }}
-        >
-          <GradationIconButton
-            color="gray"
-            onClick={() => {
-              setIsOpen(!isOpen);
-            }}
+        <div className={styles.container} onClick={handleBackgroundClick}>
+          <motion.div
+            className={styles.mainContainer}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: "100%", scale: "100%" }}
+            onClick={(e) => e.stopPropagation()}
           >
-            <Icon
-              icon="material-symbols:close-rounded"
-              style={{
-                fontSize: "18px",
-                color: "#5A708C",
+            {children}
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: "100%", scale: "100%" }}
+          >
+            <GradationIconButton
+              color="red"
+              onClick={() => {
+                setIsOpen(!isOpen);
               }}
-            />
-          </GradationIconButton>
-          <div className={styles.dragHandle} />
-          {children}
-        </motion.div>
+            >
+              <Icon
+                icon="material-symbols:close-rounded"
+                style={{
+                  fontSize: "18px",
+                  color: "#ffffff",
+                }}
+              />
+            </GradationIconButton>
+          </motion.div>
+        </div>
       ) : (
         <></>
       )}

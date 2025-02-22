@@ -6,7 +6,7 @@ export const LocationRanking = () => {
   return (
     <div className={styles.container}>
       <div className={styles.title}>現在の順位</div>
-      <span className={styles.ranking}>2位</span>
+      <span className={styles.ranking}>496位</span>
       <div className={styles.bottom} onClick={() => {}}>
         <span>ランキング</span>
         <Icon

@@ -19,6 +19,10 @@ function HotPinLocate({ setIsOpen, setPosition, locationData }) {
       latitude: location.latitude,
       longitude: location.longitude,
       name: location.name,
+      address: location.address,
+      likeCount: location.likeCount,
+      locationId: location.locationId,
+      photo: location.photo,
     });
   };
 

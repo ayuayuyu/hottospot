@@ -1,39 +1,31 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "leaflet/dist/leaflet.css";
 import "../../pages/Map.css";
 import { useEffect } from "react";
-import { Drawer } from "vaul";
 import ModalWindow from "./../../layout/ModalWindow";
-import { modalWindowAtom } from "../../atoms/modalWindowAtom";
-import { useAtom } from "jotai";
 
-import {
-  Circle,
-  CircleMarker,
-  MapContainer,
-  Marker,
-  Popup,
-  TileLayer,
-} from "react-leaflet";
-import { Box, Modal, Typography } from "@mui/material";
-import AlbumModalSheet from "./AlbumModalSheet";
-import HotPinLocate from "../hotMap/HotPinLocate";
-import AlbumPinLocate from "./AlbumPinLocate";
+import { useAtom } from "jotai";
+import { modalWindowAtom } from "../../atoms/modalWindowAtom";
+import { locationDataAtom } from "../../atoms/locationDataAtom";
+import { locationPositionAtom } from "../../atoms/locationPositionAtom";
+
+import { MapContainer, Marker, TileLayer } from "react-leaflet";
+import HotPinLocate from "./HotPinLocate";
 import HotModalSheet from "../hotModalSheet/HotModalSheet";
 import getAllLocation from "../../firebase/getTable/getAllLocation";
 import ModalSheet from "../../layout/ModalSheet";
+import PropTypes from "prop-types";
 import { GradationButton } from "../../layout/GradationButton";
-import RouteButtons from "../../layout/RouteButtons";
 
-const AlbumMap = ({ latitude, longitude, name }) => {
-  const [locationData, setLocationData] = useState([]);
+import UploadImg from "./../../firebase/uploadPhoto/UploadImg";
+import uploadPhoto from "../../firebase/uploadPhoto/uploadPhoto";
+
+const HotMap = ({ latitude, longitude, name }) => {
   const [isOpen, setIsOpen] = useState(false); //マーカー選択
-  const [position, setPosition] = useState({
-    latitude: null,
-    longitude: null,
-    name: null,
-  }); //選択したマーカーの緯度と経度
-  const [modalWindowIsOpen, setModalWindowIsOpen] = useAtom(modalWindowAtom); //マーカー選択
+  const [position, setPosition] = useAtom(locationPositionAtom); //選択したマーカーの緯度と経度
+
+  const [modalWindowIsOpen, setModalWindowIsOpen] = useAtom(modalWindowAtom);
+  const [locationData, setLocationData] = useAtom(locationDataAtom);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,23 +48,27 @@ const AlbumMap = ({ latitude, longitude, name }) => {
 
   const center = [latitude, longitude];
 
-  const handleClick = () => {
-    setIsOpen((open) => !open);
-    console.log("open", isOpen);
-  };
-
   return (
     <div>
-      <ModalWindow
-        setIsOpen={setModalWindowIsOpen}
-        isOpen={modalWindowIsOpen}
-      />
-      <GradationButton color="blue" onClick={handleClick}>
-        skdfja
-      </GradationButton>
-      <div style={{ zIndex: "50", position: "absolute" }}>
-        <RouteButtons />
-      </div>
+      <ModalWindow setIsOpen={setModalWindowIsOpen} isOpen={modalWindowIsOpen}>
+        <GradationButton color="red">
+          ファイルを選択
+          <input
+            type="file"
+            onChange={(e) => uploadPhoto(e, position.locationId)}
+            accept=".png, .jpeg, .jpg"
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              opacity: 0,
+              cursor: "pointer",
+            }}
+          />
+        </GradationButton>
+      </ModalWindow>
       <div style={{ zIndex: "10", position: "absolute" }}>
         <MapContainer center={center} zoom={13} scrollWheelZoom={false}>
           <TileLayer
@@ -91,7 +87,6 @@ const AlbumMap = ({ latitude, longitude, name }) => {
           )}
         </MapContainer>
       </div>
-      {/* ここをAlbumModalSheetにしたらアルバムの画面に */}
       <div style={{ zIndex: "80", position: "absolute" }}>
         <ModalSheet isOpen={isOpen} setIsOpen={setIsOpen}>
           <HotModalSheet setPosition={setPosition} position={position} />
@@ -101,4 +96,10 @@ const AlbumMap = ({ latitude, longitude, name }) => {
   );
 };
 
-export default AlbumMap;
+HotMap.propTypes = {
+  latitude: PropTypes.number.isRequired,
+  longitude: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+};
+
+export default HotMap;

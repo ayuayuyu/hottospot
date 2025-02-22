@@ -1,3 +1,3 @@
 import { atom } from "jotai";
 
-export const modalWindowAtom = atom(true);
+export const modalWindowAtom = atom(false);

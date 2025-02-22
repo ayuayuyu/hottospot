@@ -1,4 +1,4 @@
-import { db, auth } from '../api/firebase';
+import { db } from '../api/firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import getFriendIds from './getFriendIds';
 

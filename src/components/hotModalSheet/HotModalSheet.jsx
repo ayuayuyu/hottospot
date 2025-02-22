@@ -21,41 +21,57 @@ function HotModalSheet() {
 
   const [likes, setLikes] = useState(0);
 
-  // const backHeart = () => {
-  //   return (
-  //     <motion.div
-  //       className={styles.container}
-  //       initial={{ opacity: 0, scale: 0 }}
-  //       animate={{ opacity: "100%", scale: "200%" }}
-  //       transition={{
-  //         duration: 0.5,
-  //         ease: "easeInOut",
-  //       }}
-  //       onAnimationComplete={() => setIsTapped(false)}
-  //     >
-  //       <Icon
-  //         icon="heroicons:heart-16-solid"
-  //         style={{
-  //           fontSize: "24px",
-  //           color: "#ffffff50",
-  //         }}
-  //       />
-  //     </motion.div>
-  //   );
-  // };
-  // {isTapped && backHeart()}
+  const backHeart = () => {
+    return (
+      <motion.div
+        className={styles.container}
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: "100%", scale: "200%" }}
+        transition={{
+          duration: 0.5,
+          ease: "easeInOut",
+        }}
+        onAnimationComplete={() => setIsTapped(false)}
+      >
+        <Icon
+          icon="heroicons:heart-16-solid"
+          style={{
+            fontSize: "24px",
+            color: "#ffffff50",
+          }}
+        />
+      </motion.div>
+    );
+  };
 
   return (
     <>
       <div className={styles.dragHandle} />
       <div className={styles.meinContents}>
+        <div className={styles.likesStatus}>
+          <div className={styles.hotText}>結構アツい</div>
+          <div className={styles.likeCountContainer}>
+            <Icon
+              icon="heroicons:heart-16-solid"
+              style={{
+                fontSize: "24px",
+                color: "#FF6085",
+              }}
+            />
+            <div className={styles.likeCount}>{position.likeCount}</div>
+          </div>
+        </div>
         <Meter setLikes={setLikes} likes={likes} />
         <div style={{ display: "flex", gap: "10px" }}>
           <LocationImage />
           <div className={styles.rightContents}>
             <GradationButton
               color="red"
-              styles={{ overflow: "hidden", display: "block" }}
+              styles={{
+                overflow: "hidden",
+                display: "block",
+                position: "relative",
+              }}
               onClick={() => {
                 setIsTapped(true);
                 setIsOpen(true);
@@ -63,6 +79,7 @@ function HotModalSheet() {
               }}
             >
               いいね送信
+              {isTapped && backHeart()}
             </GradationButton>
             <LocationRanking />
             <FriendsVisited />

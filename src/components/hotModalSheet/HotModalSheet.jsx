@@ -65,7 +65,7 @@ function HotModalSheet() {
               いいね送信
             </GradationButton>
             <LocationRanking />
-            <FriendsVisited isVisited={isVisited} setIsVisited={setIsVisited}/>
+            <FriendsVisited />
           </div>
         </div>
       </div>

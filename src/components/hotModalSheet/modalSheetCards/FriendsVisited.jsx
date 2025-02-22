@@ -1,8 +1,6 @@
 import styles from "./FriendsVisited.module.scss";
 import { Icon } from "@iconify/react";
 import { GradationIconButton } from "../../../layout/GradationIconButton";
-import FriendsModalSheet from "../../friendsModalSheet/FriendsModalSheet";
-import { useState } from "react";
 
 export const FriendsVisited = () => {
   return (
@@ -57,7 +55,10 @@ export const FriendsVisited = () => {
           </GradationIconButton>
         </div>
       </div>
-      <div className={styles.bottom} onClick={() => handleVisited()}>
+      <div
+        className={styles.bottom}
+        // onClick={() => handleVisited()}
+      >
         <span>詳しく見る</span>
         <Icon
           icon="heroicons:arrow-right-16-solid"

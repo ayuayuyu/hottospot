@@ -4,12 +4,12 @@ import { ReactSVG } from "react-svg";
 import { locationPositionAtom } from "../../../atoms/locationPositionAtom";
 import { useNavigate } from "react-router-dom";
 import { locationDataAtom } from "../../../atoms/locationDataAtom";
-import { useAtom, useAtomValue } from "jotai";
+import { useAtomValue } from "jotai";
 
 export const LocationRanking = () => {
   const navigate = useNavigate();
   const positionAtom = useAtomValue(locationPositionAtom);
-  const [locationData, setLocationData] = useAtom(locationDataAtom);
+  const locationData = useAtomValue(locationDataAtom);
 
   const filteredDataWithIndex = locationData
     .map((location, index) => ({ location, index }))

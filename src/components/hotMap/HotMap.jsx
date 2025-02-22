@@ -18,9 +18,8 @@ import { GradationButton } from "../../layout/GradationButton";
 
 import uploadPhoto from "../../firebase/uploadPhoto/uploadPhoto";
 import { isHotModalAtom } from "./../../atoms/isHotModalAtom";
-import { style } from "framer-motion/client";
 
-const HotMap = ({ latitude, longitude, name }) => {
+const HotMap = ({ latitude, longitude }) => {
   const [isHotModal, setIsHotModalAtom] = useAtom(isHotModalAtom);
 
   const [position, setPosition] = useAtom(locationPositionAtom); //選択したマーカーの緯度と経度
@@ -48,7 +47,7 @@ const HotMap = ({ latitude, longitude, name }) => {
     };
 
     fetchData();
-  }, []); // 初回のみ取得
+  }, [setLocationData]); // 初回のみ取得
 
   if (latitude === null || longitude === null) {
     return <p>現在地を取得中...</p>;

@@ -3,6 +3,7 @@ import { PageTitle } from "./../layout/PageTitle";
 import RouteButtons from "./../layout/RouteButtons";
 import { locationDataAtom } from "./../atoms/locationDataAtom";
 import { useAtomValue } from "jotai";
+import { motion } from "framer-motion";
 
 function Ranking() {
   const locationData = useAtomValue(locationDataAtom);
@@ -35,13 +36,21 @@ function Ranking() {
         }}
       >
         {sortedLocationData.map((data, index) => (
-          <RankingCard
+          <motion.div
             key={index}
-            ranking={index + 1}
-            location={data.name}
-            heartsCount={data.likeCount}
-            url={data.photo}
-          />
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            viewport={{ once: true }}
+          >
+            <RankingCard
+              key={index}
+              ranking={index + 1}
+              location={data.name}
+              heartsCount={data.likeCount}
+              url={data.photo}
+            />
+          </motion.div>
         ))}
       </div>
     </div>

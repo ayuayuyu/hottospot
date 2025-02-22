@@ -24,10 +24,13 @@ import getAllLocation from "../../firebase/getTable/getAllLocation";
 import ModalSheet from "../../layout/ModalSheet";
 import { GradationButton } from "../../layout/GradationButton";
 import RouteButtons from "../../layout/RouteButtons";
+import Profile from "../../pages/Profile";
+import FriendsModalSheet from "../friendsModalSheet/FriendsModalSheet";
 
 const AlbumMap = ({ latitude, longitude, name }) => {
   const [locationData, setLocationData] = useState([]);
   const [isOpen, setIsOpen] = useState(false); //マーカー選択
+  const [isVisited,setIsVisited] = useState(true); //訪れたページに遷移するかどうか
   const [position, setPosition] = useState({
     latitude: null,
     longitude: null,
@@ -50,6 +53,10 @@ const AlbumMap = ({ latitude, longitude, name }) => {
     fetchData();
   }, []); // 初回のみ取得
 
+
+  // latitude = 35.1848185;
+  // longitude = 137.1148651;
+
   if (latitude === null || longitude === null) {
     return <p>現在地を取得中...</p>;
   }
@@ -63,13 +70,6 @@ const AlbumMap = ({ latitude, longitude, name }) => {
 
   return (
     <div>
-      <ModalWindow
-        setIsOpen={setModalWindowIsOpen}
-        isOpen={modalWindowIsOpen}
-      />
-      <GradationButton color="blue" onClick={handleClick}>
-        skdfja
-      </GradationButton>
       <div style={{ zIndex: "50", position: "absolute" }}>
         <RouteButtons />
       </div>
@@ -94,7 +94,11 @@ const AlbumMap = ({ latitude, longitude, name }) => {
       {/* ここをAlbumModalSheetにしたらアルバムの画面に */}
       <div style={{ zIndex: "80", position: "absolute" }}>
         <ModalSheet isOpen={isOpen} setIsOpen={setIsOpen}>
-          <HotModalSheet setPosition={setPosition} position={position} />
+          {
+            isVisited ? <HotModalSheet setPosition={setPosition} position={position} setIsVisited={setIsVisited} isVisited={isVisited}/> :
+            <FriendsModalSheet setIsVisited={setIsVisited} isVisited={isVisited}  position={position}/>
+          }
+           {/* <HotModalSheet setPosition={setPosition} position={position} /> */}
         </ModalSheet>
       </div>
     </div>

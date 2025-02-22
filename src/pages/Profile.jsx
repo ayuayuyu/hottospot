@@ -11,7 +11,7 @@ import { GradationButton } from "../layout/GradationButton";
 import { red } from "@mui/material/colors";
 import { Handle } from "vaul";
 import FriendsModalSheet from "../components/friendsModalSheet/FriendsModalSheet";
-import VisitedFriends from "../components/friendsModalSheet/VisitedFriends";
+import ProfileFriends from "../components/friendsModalSheet/ProfileFriends";
 
 const getUserInfo = () => {
   return auth.currentUser;
@@ -26,8 +26,8 @@ function Profile() {
     return console.log("OK");
   };
   const addfirends = () => {
-    return console.log("NG")
-  }
+    return console.log("NG");
+  };
   const friendsList = [
     {
       id: 1,
@@ -93,7 +93,7 @@ function Profile() {
           </GradationButton>
         </div>
         <div className={styles.friendslist}>フレンドリスト</div>
-        <VisitedFriends />
+        <ProfileFriends />
       </div>
     </div>
   );

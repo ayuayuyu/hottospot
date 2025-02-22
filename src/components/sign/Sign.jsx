@@ -41,13 +41,16 @@ function Sign({ login, setLogin }) {
   const onLoginAcount = async (data) => {
     console.log("ログイン", data);
     try {
-      await signInUser(email, password);
+      console.log(`email: ${data.email} , pas sword:${data.pass}`);
+      const result = await signInUser(data.email, data.pass);
+      console.log(result.operationType);
+      if (result.operationType === "signIn") {
+        conectMap();
+      }
     } catch (error) {
       console.error("サインインエラー:", error.code, error.message);
       return error.message;
     }
-
-    conectMap();
   };
 
   const signUpSendForm = [

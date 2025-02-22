@@ -7,7 +7,7 @@ import ModalSheet from "../../layout/ModalSheet";
 import { motion } from "framer-motion";
 import Sign from "../sign/Sign";
 import style from "./LoginPage.module.scss";
-import SignInGoole from "../../firebase/SignInGoole";
+import SignInGoole from "../../firebase/SignInGoogle";
 import { useNavigate } from "react-router-dom";
 
 function LoginPage() {

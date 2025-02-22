@@ -22,8 +22,8 @@ import uploadPhoto from "../../firebase/uploadPhoto/uploadPhoto";
 
 const HotMap = ({ latitude, longitude, name }) => {
   const [isOpen, setIsOpen] = useState(false); //マーカー選択
-  const [position, setPosition] = useAtom(locationPositionAtom); //選択したマーカーの緯度と経度
 
+  const [position, setPosition] = useAtom(locationPositionAtom); //選択したマーカーの緯度と経度
   const [modalWindowIsOpen, setModalWindowIsOpen] = useAtom(modalWindowAtom);
   const [locationData, setLocationData] = useAtom(locationDataAtom);
 

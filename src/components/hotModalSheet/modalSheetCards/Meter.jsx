@@ -2,13 +2,9 @@ import { useState } from "react";
 import { GradationIconButton } from "./../../../layout/GradationIconButton";
 import styles from "./Meter.module.scss";
 import { Icon } from "@iconify/react";
-import { modalWindowAtom } from "../../../atoms/modalWindowAtom";
 import { useAtom } from "jotai";
 
-export const Meter = () => {
-  const [likes, setLikes] = useState(0);
-  const [isOpen, setIsOpen] = useAtom(modalWindowAtom);
-
+export const Meter = ({ likes, setLikes }) => {
   const increment = () => {
     if (likes >= 10) return;
     setLikes(likes + 1);
@@ -46,7 +42,6 @@ export const Meter = () => {
       <GradationIconButton
         onClick={() => {
           increment();
-          setIsOpen(true);
         }}
         color="white"
       >

@@ -7,12 +7,19 @@ import { LocationRanking } from "./modalSheetCards/LocationRanking";
 import { FriendsVisited } from "./modalSheetCards/FriendsVisited";
 import { LocationImage } from "./modalSheetCards/LocationImage";
 import { GradationButton } from "../../layout/GradationButton";
+import { modalWindowAtom } from "../../atoms/modalWindowAtom";
+import { locationPositionAtom } from "./../../atoms/locationPositionAtom";
 import { useState } from "react";
+import { useAtomValue, useSetAtom } from "jotai";
+import setLikesTable from "./../../firebase/setTable/setLikesTable";
 
-function HotModalSheet({ setPosition, position }) {
+function HotModalSheet() {
   // const [disableTransform, setDisableTransform] = useState(false);
-  console.log("position", position);
   const [isTapped, setIsTapped] = useState(false);
+  const setIsOpen = useSetAtom(modalWindowAtom);
+  const position = useAtomValue(locationPositionAtom);
+
+  const [likes, setLikes] = useState(0);
 
   // const backHeart = () => {
   //   return (
@@ -42,14 +49,18 @@ function HotModalSheet({ setPosition, position }) {
     <>
       <div className={styles.dragHandle} />
       <div className={styles.meinContents}>
-        <Meter />
+        <Meter setLikes={setLikes} likes={likes} />
         <div style={{ display: "flex", gap: "10px" }}>
           <LocationImage />
           <div className={styles.rightContents}>
             <GradationButton
               color="red"
               styles={{ overflow: "hidden", display: "block" }}
-              onClick={() => setIsTapped(true)}
+              onClick={() => {
+                setIsTapped(true);
+                setIsOpen(true);
+                setLikesTable(position.locationId, likes);
+              }}
             >
               いいね送信
             </GradationButton>

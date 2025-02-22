@@ -16,7 +16,8 @@ function ModalSheet({ children, setIsOpen, isOpen }) {
       dragConstraints={{ top: 0, bottom: "100%" }}
       dragElastic={0}
       onDragEnd={(_, info) => {
-        if (info.point.y > 0) setIsOpen(false);
+        if (info.velocity.y > 100) setIsOpen(false);
+        if (info.offset.y > 100) setIsOpen(false);
       }}
     >
       <div className={styles.dragHandle} />

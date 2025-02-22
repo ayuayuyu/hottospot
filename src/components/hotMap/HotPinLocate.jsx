@@ -1,17 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import locations from "/api/locations";
-import { CircleMarker, Marker } from 'react-leaflet';
-import L from 'leaflet';
-import blueicon from '../../../public/img/blueIcon.png';
-import greenicon from '../../../public/img/greenIcon.png';
-import redicon from '../../../public/img/redIcon.png';
-import fireicon from '../../../public/img/fireIcon.png';;
+import { CircleMarker, Marker } from "react-leaflet";
+import L from "leaflet";
+import blueicon from "../../../public/img/blueIcon.png";
+import greenicon from "../../../public/img/greenIcon.png";
+import redicon from "../../../public/img/redIcon.png";
+import fireicon from "../../../public/img/fireIcon.png";
 
-import 'leaflet.awesome-markers/dist/leaflet.awesome-markers.css';
-import 'leaflet.awesome-markers';
+import "leaflet.awesome-markers/dist/leaflet.awesome-markers.css";
+import "leaflet.awesome-markers";
 
 function HotPinLocate({ setIsOpen, setPosition, locationData }) {
-
   const locationArr = Object.values(locationData);
 
   const handleOpen = (location) => {
@@ -20,8 +19,11 @@ function HotPinLocate({ setIsOpen, setPosition, locationData }) {
       latitude: location.latitude,
       longitude: location.longitude,
       name: location.name,
+      address: location.address,
+      likeCount: location.likeCount,
+      locationId: location.locationId,
+      photo: location.photo,
     });
-    
   };
 
   function Icon(location) {
@@ -35,7 +37,7 @@ function HotPinLocate({ setIsOpen, setPosition, locationData }) {
         : fireicon;
 
     return L.divIcon({
-      className: 'custom-marker',
+      className: "custom-marker",
       html: `
              <div style="position: relative; text-align: center;">
               <img src=${showIcon} style="width: 50px; height: 50px;" />

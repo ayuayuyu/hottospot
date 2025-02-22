@@ -1,19 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-import Title from "../layout/home/Title";
-import Background from "../layout/home/background";
-import { useNavigate } from "react-router-dom";
+import Title from '../layout/home/Title';
+import Background from '../layout/home/Background';
+import { useNavigate } from 'react-router-dom';
 
 function Top() {
   const navigate = useNavigate();
 
   const handleRanking = () => {
-    navigate("/ranking");
-    console.log("ranking");
+    navigate('/ranking');
+    console.log('ranking');
   };
 
   const handleMap = () => {
-    navigate("/map");
+    navigate('/map');
   };
 
   return (
@@ -24,10 +24,10 @@ function Top() {
         onClick={handleRanking}
         style={{
           zIndex: 30,
-          position: "absolute",
-          left: "50px",
-          width: "30%",
-          top: "50%",
+          position: 'absolute',
+          left: '50px',
+          width: '30%',
+          top: '50%',
         }}
       >
         Ranking
@@ -36,10 +36,10 @@ function Top() {
         onClick={handleMap}
         style={{
           zIndex: 30,
-          position: "absolute",
-          right: "50px",
-          width: "30%",
-          top: "50%",
+          position: 'absolute',
+          right: '50px',
+          width: '30%',
+          top: '50%',
         }}
       >
         Map
@@ -48,11 +48,11 @@ function Top() {
       <Link to="/login" style={{ zIndex: 10 }}>
         <div
           style={{
-            position: "absolute",
-            top: "12rem",
+            position: 'absolute',
+            top: '12rem',
             right: 0,
             left: 0,
-            margin: "0 auto",
+            margin: '0 auto',
           }}
         >
           <Title />

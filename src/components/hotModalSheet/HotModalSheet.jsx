@@ -6,7 +6,7 @@ import { LocationRanking } from "./modalSheetCards/LocationRanking";
 import { FriendsVisited } from "./modalSheetCards/FriendsVisited";
 import { LocationImage } from "./modalSheetCards/LocationImage";
 
-function HotModalSheet({ setPosition, position }) {
+function HotModalSheet({ setPosition, position, isVisited, setIsVisited }) {
   // const [disableTransform, setDisableTransform] = useState(false);
   console.log("position",position)
   return (
@@ -18,7 +18,7 @@ function HotModalSheet({ setPosition, position }) {
           <LocationImage />
           <div className={styles.rightContents}>
             <LocationRanking />
-            <FriendsVisited />
+            <FriendsVisited isVisited={isVisited} setIsVisited={setIsVisited}/>
           </div>
         </div>
       </div>

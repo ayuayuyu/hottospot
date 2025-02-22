@@ -33,6 +33,14 @@ const HotMap = ({ latitude, longitude, name }) => {
         const data = await getAllLocation();
         console.log("locationData:", data); // デバッグ用
         setLocationData(data || []);
+        if (data && data.length > 0) {
+          const sortedData = [...data].sort(
+            (a, b) => b.likeCount - a.likeCount
+          );
+          setLocationData(sortedData);
+        } else {
+          setLocationData([]);
+        }
       } catch (error) {
         console.error("Error fetching location data:", error);
         setLocationData([]);

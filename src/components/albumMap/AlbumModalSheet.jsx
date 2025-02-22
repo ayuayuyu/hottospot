@@ -1,84 +1,63 @@
-import { Box, Button, Drawer, Modal, Typography } from "@mui/material";
+import { Box, Button, Drawer, Icon, Modal, Typography } from "@mui/material";
 import { Global } from "@emotion/react";
 import { styled } from "@mui/material/styles";
 import { grey } from "@mui/material/colors";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
+import { Meter } from "../hotModalSheet/modalSheetCards/Meter";
+import { LocationImage } from "../hotModalSheet/modalSheetCards/LocationImage";
+import { LocationRanking } from "../hotModalSheet/modalSheetCards/LocationRanking";
+import { FriendsVisited } from "../hotModalSheet/modalSheetCards/FriendsVisited";
+import styles from "./AlbumModalSheet.module.scss";
+import AlbumModalCards from "./AlbumModalCards";
+import formatPhoto from "../../firebase/getTable/formatPhoto";
+import { useEffect, useState } from "react";
 
-const drawerBleeding = 56;
+function AlbumModalSheet({ setPosition, position, isVisited, setIsVisited }) {
+  //console.log("position", position);
+  const [location, setLocation] = useState([]);
+  //const list = await formatLike();
 
-const Root = styled("div")(({ theme }) => ({
-  height: "100%",
-  backgroundColor: grey[100],
-  ...theme.applyStyles("dark", {
-    backgroundColor: theme.palette.background.default,
-  }),
-}));
+  // const [iconList, setIconList] = useState([]);
 
-const StyledBox = styled("div")(({ theme }) => ({
-  backgroundColor: "#fff",
-  ...theme.applyStyles("dark", {
-    backgroundColor: grey[800],
-  }),
-}));
+  // useEffect(() => {
+  //   async function likeCount() {
+  //     const list = await formatLike();
+  //     setIconList(list);
+  //   }
+  //   likeCount();
+  // }, []);
 
-const Puller = styled("div")(({ theme }) => ({
-  width: 30,
-  height: 6,
-  backgroundColor: grey[300],
-  borderRadius: 3,
-  position: "absolute",
-  top: 8,
-  left: "calc(50% - 15px)",
-  ...theme.applyStyles("dark", {
-    backgroundColor: grey[900],
-  }),
-}));
+  useEffect(() => {
+    async function photoLocate() {
+      const list = await formatPhoto();
+      const getlist = list.map((l) => {
+        console.log("list", l);
 
-function AlbumModalSheet({ setIsOpen, isOpen, setPosition, position }) {
+        return l;
+      });
+
+      setLocation(getlist);
+    }
+    photoLocate();
+  }, []);
+
   return (
     <>
-      <Root>
-        <Global
-          styles={{
-            ".MuiDrawer-root > .MuiPaper-root": {
-              height: `calc(60% - ${drawerBleeding}px)`, ///////////// 高さの変更
-              overflow: "visible",
-            },
-          }}
-        />
-        <SwipeableDrawer
-          anchor="bottom"
-          open={isOpen}
-          onClose={() => setIsOpen(false)}
-          onOpen={() => setIsOpen(true)}
-          swipeAreaWidth={drawerBleeding}
-          disableSwipeToOpen={false}
-          ModalProps={{
-            keepMounted: true,
-          }}
-          //BackdropProps={{ invisible: true }}
-        >
-          <StyledBox
-            sx={{
-              position: "absolute",
-              top: -drawerBleeding,
-              borderTopLeftRadius: 8,
-              borderTopRightRadius: 8,
-              visibility: "visible",
-              right: 0,
-              left: 0,
-            }}
-          >
-            <Puller />
-            <Typography sx={{ p: 2, color: "text.secondary" }}>
-              {position.name}で撮った写真
-            </Typography>
-          </StyledBox>
-          <StyledBox
-            sx={{ px: 2, pb: 2, height: "100%", overflow: "auto" }}
-          ></StyledBox>
-        </SwipeableDrawer>
-      </Root>
+      <div className={styles.profile}>
+        <div className={styles.upper}>
+          <div className={styles.title}>{position.name}で撮った写真</div>
+        </div>
+        <div className={styles.friendsList}>
+          {location.map((locate, index) => {
+            console.log("locate.latitude", locate.photo);
+            console.log("position.latitude", typeof position.latitude);
+
+            return locate.latitude === Number(position.latitude) ? (
+              <img src={locate.photo} className={styles.img} key={index} />
+            ) : null;
+          })}
+        </div>
+      </div>
     </>
   );
 }

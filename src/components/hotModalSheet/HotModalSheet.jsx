@@ -75,7 +75,7 @@ function HotModalSheet() {
               onClick={() => {
                 setIsTapped(true);
                 setIsOpen(true);
-                setLikesTable(position.locationId, likes);
+                setLikesTable(position, likes);
               }}
             >
               いいね送信

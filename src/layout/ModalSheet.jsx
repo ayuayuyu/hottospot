@@ -2,9 +2,10 @@ import { motion } from "framer-motion";
 import styles from "./ModalSheet.module.scss";
 import PropTypes from "prop-types";
 
-function ModalSheet({ children, setIsOpen, isOpen }) {
+function ModalSheet({ children, setIsOpen, isOpen, height }) {
   return (
     <motion.div
+      style={{ height: `${height}px` }}
       className={styles.container}
       initial={{ y: "100%" }}
       animate={{ y: isOpen ? "0%" : "100%" }}

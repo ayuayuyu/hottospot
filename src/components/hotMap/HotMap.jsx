@@ -118,7 +118,11 @@ const HotMap = ({ latitude, longitude }) => {
         </MapContainer>
       </div>
       <div style={{ zIndex: "80", position: "absolute" }}>
-        <ModalSheet isOpen={isHotModal} setIsOpen={setIsHotModalAtom}>
+        <ModalSheet
+          isOpen={isHotModal}
+          setIsOpen={setIsHotModalAtom}
+          height={480}
+        >
           <HotModalSheet setPosition={setPosition} position={position} />
         </ModalSheet>
       </div>

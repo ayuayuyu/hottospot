@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import Title from "../../layout/home/Title";
-import Background from "../../layout/home/background";
-import "./LoginPage.css";
 import { WhiteButton } from "../../layout/WhiteButton";
 import HotModalSheet from "../hotModalSheet/HotModalSheet";
 import SignInModal from "../sign/SignInModal";
+import ModalSheet from "../../layout/ModalSheet";
+import { motion } from "framer-motion";
+import Sign from "../sign/Sign";
+import style from "./LoginPage.module.scss";
 
 function LoginPage() {
   const [isOpen, setIsOpen] = useState(false); //マーカー選択
@@ -20,28 +21,42 @@ function LoginPage() {
     setIsOpen(true);
     setLogin(false);
   };
+
+  const handleClick = () => {
+    setIsOpen(false);
+  };
   return (
     <div>
-      <div className="title">
+      {isOpen && <div className={style.modalOverlay} onClick={handleClick} />}
+      <div className={style.title}>
         <Title />
       </div>
-      <div className="sign">
-        <span className="explanation">
-          HottoSpot<span className="explanation-hello">へようこそ</span>
+
+      <div className={style.sign}>
+        <span className={style.explanation}>
+          HottoSpot<span className={style.explanationHello}>へようこそ</span>
         </span>
-        <div className="sign-in">
+        <div className={style.signIn}>
           <WhiteButton color="red" onClick={handleSignIn}>
             サインイン
           </WhiteButton>
         </div>
-        <div className="sign-up">
-          <WhiteButton color="red" onClick={handleSignUp}>
-            サインアップ
-          </WhiteButton>
+        <div>
+          <div className={style.signUp}>
+            <WhiteButton color="red" onClick={handleSignUp}>
+              サインアップ
+            </WhiteButton>
+          </div>
         </div>
       </div>
 
-      <SignInModal login={login} setIsOpen={setIsOpen} isOpen={isOpen} />
+      <div className={style.form} >
+        <ModalSheet setIsOpen={setIsOpen} isOpen={isOpen}>
+          <Sign login={login} setLogin={setLogin} />
+        </ModalSheet>
+      </div>
+
+      {/* <SignInModal login={login} setIsOpen={setIsOpen} isOpen={isOpen} /> */}
     </div>
   );
 }

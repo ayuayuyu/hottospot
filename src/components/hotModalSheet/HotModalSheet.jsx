@@ -75,7 +75,9 @@ function HotModalSheet() {
               onClick={() => {
                 setIsTapped(true);
                 setIsOpen(true);
-                setLikesTable(position, likes);
+                if (likes >= 5) {
+                  setLikesTable(position, likes);
+                }
               }}
             >
               いいね送信

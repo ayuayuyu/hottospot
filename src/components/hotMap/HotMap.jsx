@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "leaflet/dist/leaflet.css";
 import "../../pages/Map.css";
 import { useEffect } from "react";
@@ -17,11 +16,11 @@ import ModalSheet from "../../layout/ModalSheet";
 import PropTypes from "prop-types";
 import { GradationButton } from "../../layout/GradationButton";
 
-import UploadImg from "./../../firebase/uploadPhoto/UploadImg";
 import uploadPhoto from "../../firebase/uploadPhoto/uploadPhoto";
+import { isHotModalAtom } from "./../../atoms/isHotModalAtom";
 
-const HotMap = ({ latitude, longitude, name }) => {
-  const [isOpen, setIsOpen] = useState(false); //マーカー選択
+const HotMap = ({ latitude, longitude }) => {
+  const [isHotModal, setIsHotModalAtom] = useAtom(isHotModalAtom);
 
   const [position, setPosition] = useAtom(locationPositionAtom); //選択したマーカーの緯度と経度
   const [modalWindowIsOpen, setModalWindowIsOpen] = useAtom(modalWindowAtom);
@@ -33,6 +32,14 @@ const HotMap = ({ latitude, longitude, name }) => {
         const data = await getAllLocation();
         console.log("locationData:", data); // デバッグ用
         setLocationData(data || []);
+        if (data && data.length > 0) {
+          const sortedData = [...data].sort(
+            (a, b) => b.likeCount - a.likeCount
+          );
+          setLocationData(sortedData);
+        } else {
+          setLocationData([]);
+        }
       } catch (error) {
         console.error("Error fetching location data:", error);
         setLocationData([]);
@@ -40,7 +47,7 @@ const HotMap = ({ latitude, longitude, name }) => {
     };
 
     fetchData();
-  }, []); // 初回のみ取得
+  }, [setLocationData]); // 初回のみ取得
 
   if (latitude === null || longitude === null) {
     return <p>現在地を取得中...</p>;
@@ -51,6 +58,24 @@ const HotMap = ({ latitude, longitude, name }) => {
   return (
     <div>
       <ModalWindow setIsOpen={setModalWindowIsOpen} isOpen={modalWindowIsOpen}>
+        <div
+          style={{
+            borderRadius: "30px",
+            width: "84%",
+            color: "#2C3E50",
+            padding: "20px 0",
+            display: "flex",
+            flexDirection: "column",
+            gap: "10px",
+          }}
+        >
+          <div style={{ fontSize: "30px", fontWeight: "bold" }}>
+            写真アップロード
+          </div>
+          <div style={{ fontSize: "12px" }}>
+            この場所で素敵な写真を撮影したら、ファイルをアップロードして登録してみよう！登録すると、アルバムページでその写真をいつでも見ることができるよ！
+          </div>
+        </div>
         <GradationButton
           color="red"
           onClick={() => {
@@ -85,7 +110,7 @@ const HotMap = ({ latitude, longitude, name }) => {
           {/* ここをAlbumPinLocateにしたらアルバムの画面に */}
           {locationData && (
             <HotPinLocate
-              setIsOpen={setIsOpen}
+              setIsOpen={setIsHotModalAtom}
               setPosition={setPosition}
               locationData={locationData}
             />
@@ -93,7 +118,11 @@ const HotMap = ({ latitude, longitude, name }) => {
         </MapContainer>
       </div>
       <div style={{ zIndex: "80", position: "absolute" }}>
-        <ModalSheet isOpen={isOpen} setIsOpen={setIsOpen}>
+        <ModalSheet
+          isOpen={isHotModal}
+          setIsOpen={setIsHotModalAtom}
+          height={480}
+        >
           <HotModalSheet setPosition={setPosition} position={position} />
         </ModalSheet>
       </div>

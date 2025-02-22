@@ -34,3 +34,23 @@
   justify-content: center;
   gap: 8px;
 }
+
+.likesStatus {
+  display: flex;
+  justify-content: space-between;
+}
+
+.likeCountContainer {
+  display: flex;
+  align-items: center;
+}
+
+.hotText {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.likeCount {
+  font-size: 16px;
+  font-weight: bold;
+}

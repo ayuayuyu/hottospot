@@ -65,7 +65,7 @@ function RouteButtons() {
         <GradationIconButton
           color="gray"
           onClick={() => {
-            navigate("/ranking");
+            navigate("/albummap");
           }}
         >
           <Icon

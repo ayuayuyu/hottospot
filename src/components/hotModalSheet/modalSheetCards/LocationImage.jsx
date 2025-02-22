@@ -7,7 +7,7 @@ export const LocationImage = () => {
 
   const copyClipboard = async () => {
     try {
-      await navigator.clipboard.writeText(address);
+      await navigator.clipboard.writeText(locationData.address);
       console.log("コピー成功しました！！");
     } catch (err) {
       console.log(err);

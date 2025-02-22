@@ -11,6 +11,7 @@ import Profile from "./pages/Profile";
 import Element from "./pages/Element";
 import AddFriends from "./pages/AddFriends";
 import AddQr from "./pages/AddQr";
+// import AlbumMap from "./pages/AlbumMap";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/sign" element={<Element />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/addfriends" element={<AddFriends />} />
+          {/* <Route path="/albummap" element={<AlbumMap />} /> */}
         </Routes>
       </BrowserRouter>
     </>

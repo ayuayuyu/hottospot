@@ -1,14 +1,24 @@
 import { RankingCard } from "./../components/ranking/RankingCard";
 import { PageTitle } from "./../layout/PageTitle";
 import RouteButtons from "./../layout/RouteButtons";
+import { locationDataAtom } from "./../atoms/locationDataAtom";
+import { useAtomValue } from "jotai";
+import { motion } from "framer-motion";
 
 function Ranking() {
+  const locationData = useAtomValue(locationDataAtom);
+
+  const sortedLocationData = [...locationData].sort(
+    (a, b) => b.likeCount - a.likeCount
+  );
+
   return (
     <div
       style={{
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        backgroundColor: "#F4F3F3",
       }}
     >
       <PageTitle pageName="ランキング">
@@ -19,19 +29,28 @@ function Ranking() {
       <div
         style={{
           marginTop: "210px",
+          marginBottom: "100px",
           display: "flex",
           flexDirection: "column",
           gap: "20px",
         }}
       >
-        {[...Array(20)].map((_, i) => (
-          <RankingCard
-            key={i}
-            ranking={i + 1}
-            location="愛知県 名古屋城"
-            heartsCount={120}
-            url="/vite.svg"
-          />
+        {sortedLocationData.map((data, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            viewport={{ once: true }}
+          >
+            <RankingCard
+              key={index}
+              ranking={index + 1}
+              location={data.name}
+              heartsCount={data.likeCount}
+              url={data.photo}
+            />
+          </motion.div>
         ))}
       </div>
     </div>

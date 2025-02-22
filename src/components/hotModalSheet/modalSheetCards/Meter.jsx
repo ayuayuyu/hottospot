@@ -1,8 +1,7 @@
-import { useState } from "react";
 import { GradationIconButton } from "./../../../layout/GradationIconButton";
 import styles from "./Meter.module.scss";
 import { Icon } from "@iconify/react";
-import { useAtom } from "jotai";
+import PropTypes from "prop-types";
 
 export const Meter = ({ likes, setLikes }) => {
   const increment = () => {
@@ -55,4 +54,9 @@ export const Meter = ({ likes, setLikes }) => {
       </GradationIconButton>
     </div>
   );
+};
+
+Meter.propTypes = {
+  likes: PropTypes.number.isRequired,
+  setLikes: PropTypes.func.isRequired,
 };

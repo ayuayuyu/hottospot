@@ -17,16 +17,15 @@ function Map() {
     });
   }, []);
 
+  const handleClick = () => {
+    setIsOpen(open => !open)
+    console.log("open",isOpen)
+  }
+
+
   return (
     <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0 }}>
-      {/* <AlbumMap latitude={position.latitude} longitude={position.longitude} /> */}
-      <ModalSheet isOpen={isOpen} setIsOpen={setIsOpen}>
-        <HotModalSheet></HotModalSheet>
-      </ModalSheet>
-      <GradationButton color="blue" onClick={() => setIsOpen((p) => !p)}>
-        skdfja
-      </GradationButton>
-      <RouteButtons />
+      <AlbumMap latitude={position.latitude} longitude={position.longitude} />
     </div>
   );
 }

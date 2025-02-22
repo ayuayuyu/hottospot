@@ -8,6 +8,7 @@ import { LocationImage } from "./modalSheetCards/LocationImage";
 
 function HotModalSheet({ setPosition, position }) {
   // const [disableTransform, setDisableTransform] = useState(false);
+  console.log("position",position)
   return (
     <>
       <div className={styles.dragHandle} />

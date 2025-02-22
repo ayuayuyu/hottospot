@@ -26,6 +26,8 @@ import { GradationButton } from "../../layout/GradationButton";
 import RouteButtons from "../../layout/RouteButtons";
 import Profile from "../../pages/Profile";
 import FriendsModalSheet from "../friendsModalSheet/FriendsModalSheet";
+import 'leaflet.awesome-markers/dist/leaflet.awesome-markers.css';
+import 'leaflet.awesome-markers';
 
 const AlbumMap = ({ latitude, longitude, name }) => {
   const [locationData, setLocationData] = useState([]);
@@ -54,19 +56,14 @@ const AlbumMap = ({ latitude, longitude, name }) => {
   }, []); // 初回のみ取得
 
 
-  // latitude = 35.1848185;
-  // longitude = 137.1148651;
+  latitude = 35.1848185;
+  longitude = 137.1148651;
 
   if (latitude === null || longitude === null) {
     return <p>現在地を取得中...</p>;
   }
 
   const center = [latitude, longitude];
-
-  const handleClick = () => {
-    setIsOpen((open) => !open);
-    console.log("open", isOpen);
-  };
 
   return (
     <div>
@@ -83,7 +80,7 @@ const AlbumMap = ({ latitude, longitude, name }) => {
 
           {/* ここをAlbumPinLocateにしたらアルバムの画面に */}
           {locationData && (
-            <HotPinLocate
+            <AlbumPinLocate
               setIsOpen={setIsOpen}
               setPosition={setPosition}
               locationData={locationData}
@@ -93,9 +90,9 @@ const AlbumMap = ({ latitude, longitude, name }) => {
       </div>
       {/* ここをAlbumModalSheetにしたらアルバムの画面に */}
       <div style={{ zIndex: "80", position: "absolute" }}>
-        <ModalSheet isOpen={isOpen} setIsOpen={setIsOpen}>
+        <ModalSheet isOpen={isOpen} setIsOpen={setIsOpen} >
           {
-            isVisited ? <HotModalSheet setPosition={setPosition} position={position} setIsVisited={setIsVisited} isVisited={isVisited}/> :
+            isVisited ? <AlbumModalSheet setPosition={setPosition} position={position} setIsVisited={setIsVisited} isVisited={isVisited}/> :
             <FriendsModalSheet setIsVisited={setIsVisited} isVisited={isVisited}  position={position}/>
           }
            {/* <HotModalSheet setPosition={setPosition} position={position} /> */}

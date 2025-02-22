@@ -57,7 +57,7 @@ export const FriendsVisited = () => {
       </div>
       <div
         className={styles.bottom}
-        // onClick={() => handleVisited()}
+         //onClick={() => handleVisited()}
       >
         <span>詳しく見る</span>
         <Icon

@@ -51,7 +51,12 @@ const HotMap = ({ latitude, longitude, name }) => {
   return (
     <div>
       <ModalWindow setIsOpen={setModalWindowIsOpen} isOpen={modalWindowIsOpen}>
-        <GradationButton color="red">
+        <GradationButton
+          color="red"
+          onClick={() => {
+            console.log(position);
+          }}
+        >
           ファイルを選択
           <input
             type="file"

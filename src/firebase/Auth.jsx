@@ -15,11 +15,13 @@ import UploadImg from './uploadPhoto/UploadImg';
 import QrcodeScannerUid from './friend/QrcodeScannerUid';
 import formatPhoto from './getTable/formatPhoto';
 import getFriendIds from './getTable/getFriendIds';
+import formatFriends from './getTable/formatFriends';
 
 const Auth = () => {
   const [friendIds, setFriendIds] = useState([]);
   formatLike();
   formatPhoto();
+  formatFriends();
   const [user, loading, error] = useAuthState(auth);
   const [currentPage, setCurrentPage] = useState('home');
 

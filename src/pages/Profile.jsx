@@ -1,14 +1,13 @@
-import React from "react";
-import { useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { PageTitle } from "../layout/PageTitle";
-import styles from "./Profile.module.scss";
+import { useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { PageTitle } from '../layout/PageTitle';
+import styles from './Profile.module.scss';
 // import { auth } from '../api/firebase';
-import { auth } from "../firebase/api/firebase";
-import defalutImg from "../../public/img/defalutIcon.png";
-import { GradationButton } from "../layout/GradationButton";
-import ProfileFriends from "../components/friendsModalSheet/ProfileFriends";
-import { useNavigate } from "react-router-dom";
+import { auth } from '../firebase/api/firebase';
+import defalutImg from '../../public/img/defalutIcon.png';
+import { GradationButton } from '../layout/GradationButton';
+import ProfileFriends from '../components/friendsModalSheet/ProfileFriends';
+import { useNavigate } from 'react-router-dom';
 
 const getUserInfo = () => {
   return auth.currentUser;
@@ -18,44 +17,15 @@ function Profile() {
   const user = getUserInfo();
   console.log(`user:${user}`);
   const [users, loading, error] = useAuthState(auth);
-  const [currentPage, setCurrentPage] = useState("home");
+  const [currentPage, setCurrentPage] = useState('home');
   const navigate = useNavigate();
 
   const friendcode = () => {
-    navigate("/addqr");
+    navigate('/addqr');
   };
   const addfirends = () => {
-    navigate("/addfriends");
+    navigate('/addfriends');
   };
-  const friendsList = [
-    {
-      id: 1,
-      name: "トマト",
-      icon: "写真",
-      like: 2,
-      place: "香嵐渓",
-      latitude: 35.1375,
-      longitude: 137.2958,
-    },
-    {
-      id: 2,
-      name: "トマト",
-      icon: "写真",
-      like: 5,
-      place: "犬山城",
-      latitude: 35.3894,
-      longitude: 136.9392,
-    },
-    {
-      id: 3,
-      name: "トマト",
-      icon: "写真",
-      like: 8,
-      place: "岡崎城",
-      latitude: 34.9546,
-      longitude: 137.1608,
-    },
-  ];
 
   if (loading) {
     return <p>読み込み中...</p>;

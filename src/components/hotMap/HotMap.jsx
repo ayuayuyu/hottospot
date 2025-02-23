@@ -18,6 +18,8 @@ import { GradationButton } from "../../layout/GradationButton";
 
 import uploadPhoto from "../../firebase/uploadPhoto/uploadPhoto";
 import { isHotModalAtom } from "./../../atoms/isHotModalAtom";
+import AlbumPinLocate from "../albumMap/AlbumPinLocate";
+import AlbumModalSheet from "../albumMap/AlbumModalSheet";
 
 import LoadingAnimation from "../animation/LoadingAnimation";
 

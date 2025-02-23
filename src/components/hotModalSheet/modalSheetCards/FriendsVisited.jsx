@@ -1,63 +1,41 @@
 import styles from "./FriendsVisited.module.scss";
 import { Icon } from "@iconify/react";
 import { GradationIconButton } from "../../../layout/GradationIconButton";
+import { useEffect, useState } from "react";
+import formatFriends from "../../../firebase/getTable/formatFriends";
 
 export const FriendsVisited = () => {
+  const [iconList, setIconList] = useState([]);
+
+  useEffect(() => {
+    const friends = async () => {
+      const list = await formatFriends();
+      // console.log("list", list);
+      const icon = list.map((i) => {
+        console.log("icon", i.icon, "name", i.name);
+      });
+      setIconList(list);
+    };
+    friends();
+  }, []);
+
   return (
     <div className={styles.container}>
       <div className={styles.title}>訪れた友達</div>
-      <div className={styles.iconContainer}>
-        <div className={styles.icons}>
-          <GradationIconButton color="red">
-            <Icon
-              icon="heroicons:ellipsis-horizontal-16-solid"
-              style={{
-                fontSize: "18px",
-                color: "#ffffff",
-              }}
-            />
-          </GradationIconButton>
-          <GradationIconButton color="red">
-            <Icon
-              icon="heroicons:minus-16-solid"
-              style={{
-                fontSize: "18px",
-                color: "#ffffff",
-              }}
-            />
-          </GradationIconButton>
-          <GradationIconButton color="gray">
-            <Icon
-              icon="heroicons:minus-16-solid"
-              style={{
-                fontSize: "18px",
-                color: "#ffffff",
-              }}
-            />
-          </GradationIconButton>
-          <GradationIconButton color="red">
-            <Icon
-              icon="heroicons:minus-16-solid"
-              style={{
-                fontSize: "18px",
-                color: "#ffffff",
-              }}
-            />
-          </GradationIconButton>
-          <GradationIconButton color="gray">
-            <Icon
-              icon="heroicons:minus-16-solid"
-              style={{
-                fontSize: "18px",
-                color: "#ffffff",
-              }}
-            />
-          </GradationIconButton>
-        </div>
+
+      <div className={styles.iconlist}>
+        {iconList.map((friendsList, index) => {
+          return (
+            <div className={styles.friendsicon} key={index}>
+              <img src={friendsList.icon} className={styles.img}/>
+            </div>
+          );
+        })}
       </div>
+
       <div
         className={styles.bottom}
-         //onClick={() => handleVisited()}
+        //onClick={() => handleVisited()}
       >
         <span>詳しく見る</span>
         <Icon

@@ -26,6 +26,9 @@ importers:
       '@mui/material':
         specifier: ^6.4.4
         version: 6.4.5(@emotion/react@11.14.0(@types/react@19.0.9)(react@19.0.0))(@emotion/styled@11.14.0(@emotion/react@11.14.0(@types/react@19.0.9)(react@19.0.0))(@types/react@19.0.9)(react@19.0.0))(@types/react@19.0.9)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@rive-app/react-canvas':
+        specifier: ^4.18.2
+        version: 4.18.2(react@19.0.0)
       '@yudiel/react-qr-scanner':
         specifier: ^2.2.1
         version: 2.2.1(@types/emscripten@1.40.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -1011,6 +1014,18 @@ packages:
     peerDependencies:
       '@firebase/app-types': 0.x
 
+  '@rive-app/canvas@2.26.3':
+    resolution: {integrity: sha512-u91nWyqDyTr1Ct3k5P1H+s0vHWP5HmcCFniWJhKeWP0gl/hX5hEQ2dMGrtt4s0WPucMbkZJBuxwMJrRkK6KaEQ==}
+
+  '@rive-app/react-canvas@4.18.2':
+    resolution: {integrity: sha512-VxYje6ubHvZRSAS+Rd4G/fb8ub/AP84d53pDbROtle78/hZW09k0EypmZjBbUxywRLkJU7igtjnwv+isK2ph2Q==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0
+
+  '@rollup/rollup-android-arm-eabi@4.34.7':
+    resolution: {integrity: sha512-l6CtzHYo8D2TQ3J7qJNpp3Q1Iye56ssIAtqbM2H8axxCEEwvN7o8Ze9PuIapbxFL3OHrJU2JBX6FIIVnP/rYyw==}
+    cpu: [arm]
+    os: [android]
   '@firebase/installations@0.6.12':
     resolution: {integrity: sha512-ES/WpuAV2k2YtBTvdaknEo7IY8vaGjIjS3zhnHSAIvY9KwTR8XZFXOJoZ3nSkjN1A5R4MtEh+07drnzPDg9vaw==}
     peerDependencies:
@@ -4970,6 +4985,12 @@ snapshots:
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
 
+  '@rive-app/canvas@2.26.3': {}
+
+  '@rive-app/react-canvas@4.18.2(react@19.0.0)':
+    dependencies:
+      '@rive-app/canvas': 2.26.3
+      react: 19.0.0
   '@rollup/plugin-babel@5.3.1(@babel/core@7.26.9)(@types/babel__core@7.20.5)(rollup@2.79.2)':
     dependencies:
       '@babel/core': 7.26.9

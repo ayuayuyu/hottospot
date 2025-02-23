@@ -16,6 +16,7 @@
     "@icons-pack/react-simple-icons": "^12.0.0",
     "@mui/icons-material": "^6.4.5",
     "@mui/material": "^6.4.4",
+    "@rive-app/react-canvas": "^4.18.2",
     "@yudiel/react-qr-scanner": "^2.2.1",
     "firebase": "^11.3.1",
     "framer-motion": "^12.4.7",

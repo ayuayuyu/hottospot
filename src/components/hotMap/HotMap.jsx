@@ -18,6 +18,7 @@ import { GradationButton } from "../../layout/GradationButton";
 
 import uploadPhoto from "../../firebase/uploadPhoto/uploadPhoto";
 import { isHotModalAtom } from "./../../atoms/isHotModalAtom";
+import Search from "./../../layout/Search";
 import AlbumPinLocate from "../albumMap/AlbumPinLocate";
 import AlbumModalSheet from "../albumMap/AlbumModalSheet";
 
@@ -61,6 +62,7 @@ const HotMap = ({ latitude, longitude }) => {
 
   return (
     <div>
+      <Search />
       <ModalWindow setIsOpen={setModalWindowIsOpen} isOpen={modalWindowIsOpen}>
         <div
           style={{

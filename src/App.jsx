@@ -1,16 +1,17 @@
-import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Top from "./pages/Top";
-import Map from "./pages/Map";
-import Ranking from "./pages/Ranking";
-import Login from "./pages/Login";
-import FriendsModalSheet from "./components/friendsModalSheet/FriendsModalSheet";
-import "./App.css";
-import Auth from "./firebase/Auth";
-import Profile from "./pages/Profile";
-import Element from "./pages/Element";
-import AddFriends from "./pages/AddFriends";
-import AddQr from "./pages/AddQr";
+import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Top from './pages/Top';
+import Map from './pages/Map';
+import Ranking from './pages/Ranking';
+import Login from './pages/Login';
+import FriendsModalSheet from './components/friendsModalSheet/FriendsModalSheet';
+import './App.css';
+import Auth from './firebase/Auth';
+import Profile from './pages/Profile';
+import Element from './pages/Element';
+import AddFriends from './pages/AddFriends';
+import AddQr from './pages/AddQr';
+import QrCodeScan from './pages/QrCodeScan';
 // import AlbumMap from "./pages/AlbumMap";
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <Route path="/sign" element={<Element />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/addfriends" element={<AddFriends />} />
+          <Route path="/scanqr" element={<QrCodeScan />} />
           {/* <Route path="/albummap" element={<AlbumMap />} /> */}
         </Routes>
       </BrowserRouter>

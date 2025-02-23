@@ -17,6 +17,9 @@ const signInUser = async (email, password) => {
     if (error.code === "auth/invalid-credential") {
       throw new Error("パスワードが違います");
     }
+    if (error.code === "auth/invalid-email") {
+      throw new Error("メールアドレスが違います");
+    }
     console.error("サインインエラー:", error.code, error.message);
     return error.message;
   }

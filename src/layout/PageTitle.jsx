@@ -14,7 +14,7 @@ export const PageTitle = ({ pageName, children }) => {
         <GradationIconButton
           color="none"
           onClick={() => {
-            navigate("/map");
+            navigate(-1);
           }}
         >
           <Icon

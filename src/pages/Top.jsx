@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import Title from '../layout/home/Title';
-import Background from '../layout/home/background';
+import Background from '../layout/home/Background';
 import { useNavigate } from 'react-router-dom';
 
 function Top() {

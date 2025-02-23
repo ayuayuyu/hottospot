@@ -1,19 +1,19 @@
-import styles from "./friendsModalSheet.Module.scss";
-import formatLike from "../../firebase/getTable/formatLike";
-import { useEffect, useState } from "react";
+import styles from './friendsModalSheet.module.scss';
+import formatLike from '../../firebase/getTable/formatLike';
+import { useEffect, useState } from 'react';
 
 function VisitedFriends({ position }) {
   const [iconList, setIconList] = useState([]);
 
-  console.log("position", position);
+  console.log('position', position);
 
   useEffect(() => {
     async function likeCount() {
       const list = await formatLike();
-      console.log("like", list);
+      console.log('like', list);
 
       const icon = list.map((i) => {
-        console.log("icon", i.icon);
+        console.log('icon', i.icon);
       });
       icon;
       setIconList(list);
@@ -31,7 +31,7 @@ function VisitedFriends({ position }) {
   return (
     <div className={styles.friendsList}>
       {iconList.map((friendsList) => {
-        console.log("position", position.latitude);
+        console.log('position', position.latitude);
 
         if (position.latitude == friendsList.latitude) {
           return (

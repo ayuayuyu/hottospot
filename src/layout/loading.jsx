@@ -4,7 +4,6 @@ export const Loading = ({ message }) => {
   return (
     <div>
       <RatingAnimation message={message} />
-      <div>{message}</div>
     </div>
   );
 };

@@ -7,6 +7,7 @@ import { GradationButton } from '../layout/GradationButton';
 import ProfileFriends from '../components/friendsModalSheet/ProfileFriends';
 import { useNavigate } from 'react-router-dom';
 import { Loading } from '../layout/loading';
+import ErrorPage from '../layout/error/ErrorPage';
 
 const getUserInfo = () => {
   return auth.currentUser;
@@ -30,11 +31,16 @@ function Profile() {
   }
 
   if (!users) {
-    return <p>ログインしてください</p>;
+    return (
+      <ErrorPage
+        error={'アカウントが\n見つかりません'}
+        message={'ログインしてください'}
+      />
+    );
   }
 
   if (error) {
-    return <p>エラーが発生しました: {error.message}</p>;
+    return <ErrorPage error={error.message} />;
   }
 
   return (

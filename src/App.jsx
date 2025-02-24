@@ -12,6 +12,7 @@ import Element from './pages/Element';
 import AddFriends from './pages/AddFriends';
 import DisplayQrCode from './pages/DisplayQrCode';
 import QrCodeScan from './pages/QrCodeScan';
+import NotFound from './pages/NotFound';
 // import AlbumMap from "./pages/AlbumMap";
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
           <Route path="/friendsmodal" element={<FriendsModalSheet />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/displayqr" element={<DisplayQrCode />} />
-          <Route path="*" element={<h1>Not Found Page</h1>} />
+          <Route path="*" element={<NotFound />} />
           <Route path="/sign" element={<Element />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/addfriends" element={<AddFriends />} />

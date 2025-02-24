@@ -5,6 +5,7 @@ import styles from './displayQrCode.module.scss';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { GradationButton } from '../layout/GradationButton';
 import { Loading } from '../layout/loading';
+import ErrorPage from '../layout/error/ErrorPage';
 
 function DisplayQrCode() {
   const [user, loading, error] = useAuthState(auth);
@@ -22,11 +23,16 @@ function DisplayQrCode() {
   }
 
   if (!user) {
-    return <p>ログインをしてください</p>;
+    return (
+      <ErrorPage
+        error={'アカウントが\n見つかりません'}
+        message={'ログインしてください'}
+      />
+    );
   }
 
   if (error) {
-    return <p>エラーが発生しました: {error.message}</p>;
+    return <ErrorPage error={error.message} />;
   }
 
   const uid = auth.currentUser.uid;

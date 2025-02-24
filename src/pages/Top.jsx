@@ -6,9 +6,10 @@ import Title from '../layout/home/Title';
 import Background from '../layout/home/Background';
 import { useNavigate } from 'react-router-dom';
 import { Loading } from '../layout/loading';
+import ErrorPage from '../layout/error/ErrorPage';
 
 function Top() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const [user, loading, error] = useAuthState(auth);
 
@@ -17,17 +18,17 @@ function Top() {
   }
 
   if (error) {
-    return <p>エラーが発生しました: {error.message}</p>;
+    return <ErrorPage error={error.message} />;
   }
 
-  const handleRanking = () => {
-    navigate('/ranking');
-    console.log('ranking');
-  };
+  // const handleRanking = () => {
+  //   navigate('/ranking');
+  //   console.log('ranking');
+  // };
 
-  const handleMap = () => {
-    navigate('/map');
-  };
+  // const handleMap = () => {
+  //   navigate('/map');
+  // };
 
   return (
     <>
@@ -56,7 +57,7 @@ function Top() {
           <div>
             <Link to="/login" style={{ zIndex: 10 }} />
 
-            <button
+            {/* <button
               onClick={handleRanking}
               style={{
                 zIndex: 30,
@@ -79,7 +80,7 @@ function Top() {
               }}
             >
               Map
-            </button>
+            </button> */}
 
             <Link to="/login" style={{ zIndex: 10 }}>
               <div

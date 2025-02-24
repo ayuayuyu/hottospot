@@ -1,28 +1,29 @@
-import "leaflet/dist/leaflet.css";
-import "../../pages/Map.css";
-import { useEffect } from "react";
-import ModalWindow from "./../../layout/ModalWindow";
+import 'leaflet/dist/leaflet.css';
+import '../../pages/Map.css';
+import { useEffect } from 'react';
+import ModalWindow from './../../layout/ModalWindow';
 
-import { useAtom } from "jotai";
-import { modalWindowAtom } from "../../atoms/modalWindowAtom";
-import { locationDataAtom } from "../../atoms/locationDataAtom";
-import { locationPositionAtom } from "../../atoms/locationPositionAtom";
+import { useAtom } from 'jotai';
+import { modalWindowAtom } from '../../atoms/modalWindowAtom';
+import { locationDataAtom } from '../../atoms/locationDataAtom';
+import { locationPositionAtom } from '../../atoms/locationPositionAtom';
 
-import { MapContainer, Marker, TileLayer } from "react-leaflet";
-import HotPinLocate from "./HotPinLocate";
-import HotModalSheet from "../hotModalSheet/HotModalSheet";
-import getAllLocation from "../../firebase/getTable/getAllLocation";
-import ModalSheet from "../../layout/ModalSheet";
-import PropTypes from "prop-types";
-import { GradationButton } from "../../layout/GradationButton";
+import { MapContainer, Marker, TileLayer } from 'react-leaflet';
+import HotPinLocate from './HotPinLocate';
+import HotModalSheet from '../hotModalSheet/HotModalSheet';
+import getAllLocation from '../../firebase/getTable/getAllLocation';
+import ModalSheet from '../../layout/ModalSheet';
+import PropTypes from 'prop-types';
+import { GradationButton } from '../../layout/GradationButton';
 
-import uploadPhoto from "../../firebase/uploadPhoto/uploadPhoto";
-import { isHotModalAtom } from "./../../atoms/isHotModalAtom";
-import Search from "./../../layout/Search";
-import AlbumPinLocate from "../albumMap/AlbumPinLocate";
-import AlbumModalSheet from "../albumMap/AlbumModalSheet";
+import uploadPhoto from '../../firebase/uploadPhoto/uploadPhoto';
+import { isHotModalAtom } from './../../atoms/isHotModalAtom';
+import Search from './../../layout/Search';
+import AlbumPinLocate from '../albumMap/AlbumPinLocate';
+import AlbumModalSheet from '../albumMap/AlbumModalSheet';
 
-import LoadingAnimation from "../animation/LoadingAnimation";
+// import LoadingAnimation from "../animation/LoadingAnimation";
+import { Loading } from '../../layout/loading';
 
 const HotMap = ({ latitude, longitude }) => {
   const [isHotModal, setIsHotModalAtom] = useAtom(isHotModalAtom);
@@ -35,18 +36,18 @@ const HotMap = ({ latitude, longitude }) => {
     const fetchData = async () => {
       try {
         const data = await getAllLocation();
-        console.log("locationData:", data); // デバッグ用
+        console.log('locationData:', data); // デバッグ用
         setLocationData(data || []);
         if (data && data.length > 0) {
           const sortedData = [...data].sort(
-            (a, b) => b.likeCount - a.likeCount
+            (a, b) => b.likeCount - a.likeCount,
           );
           setLocationData(sortedData);
         } else {
           setLocationData([]);
         }
       } catch (error) {
-        console.error("Error fetching location data:", error);
+        console.error('Error fetching location data:', error);
         setLocationData([]);
       }
     };
@@ -55,7 +56,7 @@ const HotMap = ({ latitude, longitude }) => {
   }, [setLocationData]); // 初回のみ取得
 
   if (latitude === null || longitude === null) {
-    return <LoadingAnimation />;
+    return <Loading message={'位置情報を取得中'} />;
   }
 
   const center = [latitude, longitude];
@@ -66,19 +67,19 @@ const HotMap = ({ latitude, longitude }) => {
       <ModalWindow setIsOpen={setModalWindowIsOpen} isOpen={modalWindowIsOpen}>
         <div
           style={{
-            borderRadius: "30px",
-            width: "84%",
-            color: "#2C3E50",
-            padding: "20px 0",
-            display: "flex",
-            flexDirection: "column",
-            gap: "10px",
+            borderRadius: '30px',
+            width: '84%',
+            color: '#2C3E50',
+            padding: '20px 0',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '10px',
           }}
         >
-          <div style={{ fontSize: "30px", fontWeight: "bold" }}>
+          <div style={{ fontSize: '30px', fontWeight: 'bold' }}>
             写真アップロード
           </div>
-          <div style={{ fontSize: "12px" }}>
+          <div style={{ fontSize: '12px' }}>
             この場所で素敵な写真を撮影したら、ファイルをアップロードして登録してみよう！登録すると、アルバムページでその写真をいつでも見ることができるよ！
           </div>
         </div>
@@ -94,18 +95,18 @@ const HotMap = ({ latitude, longitude }) => {
             onChange={(e) => uploadPhoto(e, position.locationId)}
             accept=".png, .jpeg, .jpg"
             style={{
-              position: "absolute",
+              position: 'absolute',
               top: 0,
               left: 0,
-              width: "100%",
-              height: "100%",
+              width: '100%',
+              height: '100%',
               opacity: 0,
-              cursor: "pointer",
+              cursor: 'pointer',
             }}
           />
         </GradationButton>
       </ModalWindow>
-      <div style={{ zIndex: "10", position: "absolute" }}>
+      <div style={{ zIndex: '10', position: 'absolute' }}>
         <MapContainer center={center} zoom={13} scrollWheelZoom={false}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -123,7 +124,7 @@ const HotMap = ({ latitude, longitude }) => {
           )}
         </MapContainer>
       </div>
-      <div style={{ zIndex: "80", position: "absolute" }}>
+      <div style={{ zIndex: '80', position: 'absolute' }}>
         <ModalSheet
           isOpen={isHotModal}
           setIsOpen={setIsHotModalAtom}

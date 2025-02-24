@@ -1,13 +1,12 @@
-import { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { PageTitle } from '../layout/PageTitle';
 import styles from './Profile.module.scss';
-// import { auth } from '../api/firebase';
 import { auth } from '../firebase/api/firebase';
 import defalutImg from '../../public/img/defalutIcon.png';
 import { GradationButton } from '../layout/GradationButton';
 import ProfileFriends from '../components/friendsModalSheet/ProfileFriends';
 import { useNavigate } from 'react-router-dom';
+import { Loading } from '../layout/loading';
 
 const getUserInfo = () => {
   return auth.currentUser;
@@ -17,18 +16,21 @@ function Profile() {
   const user = getUserInfo();
   console.log(`user:${user}`);
   const [users, loading, error] = useAuthState(auth);
-  const [currentPage, setCurrentPage] = useState('home');
   const navigate = useNavigate();
 
-  const friendcode = () => {
-    navigate('/addqr');
+  const displayqr = () => {
+    navigate('/displayqr');
   };
   const addfirends = () => {
     navigate('/addfriends');
   };
 
   if (loading) {
-    return <p>読み込み中...</p>;
+    return <Loading message={'読み込み中'} />;
+  }
+
+  if (!users) {
+    return <p>ログインしてください</p>;
   }
 
   if (error) {
@@ -52,7 +54,7 @@ function Profile() {
         <p className={styles.username}>{user.displayName}</p>
         <p className={styles.email}>{user.email}</p>
         <div className={styles.codobutton}>
-          <GradationButton color="red" onClick={friendcode}>
+          <GradationButton color="red" onClick={displayqr}>
             フレンドコード
           </GradationButton>
         </div>

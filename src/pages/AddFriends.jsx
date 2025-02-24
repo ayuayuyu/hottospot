@@ -1,11 +1,12 @@
-import { PageTitle } from "../layout/PageTitle";
-import styles from "./AddFriends.module.scss";
-import { auth } from "../firebase/api/firebase";
-import { GradationButton } from "../layout/GradationButton";
-import { FormInput } from "./../layout/FormInput";
-import { useForm } from "react-hook-form";
-import { useState } from "react";
-import addFriendUserTable from "../firebase/updateTable/addFriendUserTable";
+import { PageTitle } from '../layout/PageTitle';
+import styles from './AddFriends.module.scss';
+import { auth } from '../firebase/api/firebase';
+import { GradationButton } from '../layout/GradationButton';
+import { FormInput } from './../layout/FormInput';
+import { useForm } from 'react-hook-form';
+import { useState } from 'react';
+import addFriendUserTable from '../firebase/updateTable/addFriendUserTable';
+import { useNavigate } from 'react-router-dom';
 
 const getUserInfo = () => {
   return auth.currentUser;
@@ -13,8 +14,9 @@ const getUserInfo = () => {
 
 function AddFriends() {
   const { register, handleSubmit } = useForm();
-  const [friendUid, setFriendUid] = useState("");
-  const [message, setMessage] = useState("");
+  const [friendUid, setFriendUid] = useState('');
+  const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     setFriendUid(data.friendCode);
@@ -22,17 +24,20 @@ function AddFriends() {
   };
   const handleAddFriend = async () => {
     if (!friendUid) {
-      setMessage("UID を入力してください");
+      setMessage('UID を入力してください');
       return;
     }
     try {
       //友達の追加
       await addFriendUserTable(friendUid);
       setMessage(`友達登録完了`);
-      setFriendUid(""); // 入力欄をクリア\
+      setFriendUid(''); // 入力欄をクリア\
     } catch (error) {
-      setMessage("エラーが発生しました: " + error.message);
+      setMessage('エラーが発生しました: ' + error.message);
     }
+  };
+  const handleSend = () => {
+    navigate('/scanqr');
   };
 
   const user = getUserInfo();
@@ -54,6 +59,9 @@ function AddFriends() {
         />
         <GradationButton color="red" onClick={handleSubmit(onSubmit)}>
           フレンド追加
+        </GradationButton>
+        <GradationButton color="red" onClick={handleSend}>
+          QR 読み取り
         </GradationButton>
       </form>
     </div>

@@ -1,4 +1,4 @@
-import { Marker } from "react-leaflet";
+import { Marker, useMap } from "react-leaflet";
 import L from "leaflet";
 import blueicon from "../../../public/img/blueIcon.png";
 import greenicon from "../../../public/img/greenIcon.png";
@@ -8,9 +8,13 @@ import PropTypes from "prop-types";
 
 import "leaflet.awesome-markers/dist/leaflet.awesome-markers.css";
 import "leaflet.awesome-markers";
+import { useState } from "react";
 
 function HotPinLocate({ setIsOpen, setPosition, locationData }) {
+  const [locate,setLocate] = useState(false)
+    const map = useMap();
   const locationArr = Object.values(locationData);
+  
 
   const handleOpen = (location) => {
     setIsOpen(true);
@@ -22,6 +26,11 @@ function HotPinLocate({ setIsOpen, setPosition, locationData }) {
       likeCount: location.likeCount,
       locationId: location.locationId,
       photo: location.photo,
+    });
+
+    // クリック時に地図を拡大
+    map.setView([location.latitude, location.longitude], 13, {
+      animate: true,
     });
   };
 
@@ -53,6 +62,7 @@ function HotPinLocate({ setIsOpen, setPosition, locationData }) {
       iconAnchor: [25, 25],
     });
   }
+
 
   return (
     <div>

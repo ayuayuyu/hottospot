@@ -26,13 +26,26 @@ import { GradationButton } from "../../layout/GradationButton";
 import RouteButtons from "../../layout/RouteButtons";
 import Profile from "../../pages/Profile";
 import FriendsModalSheet from "../friendsModalSheet/FriendsModalSheet";
-import 'leaflet.awesome-markers/dist/leaflet.awesome-markers.css';
-import 'leaflet.awesome-markers';
+import "leaflet.awesome-markers/dist/leaflet.awesome-markers.css";
+import "leaflet.awesome-markers";
+import { useRef } from "react";
+import { useMapEvent } from "react-leaflet";
+
+function SetViewOnClick({ animateRef }) {
+  const map = useMapEvent("click", (e) => {
+    map.setView(e.latlng, map.getZoom(), {
+      animate: true ,
+    });
+  });
+
+  return null;
+}
 
 const AlbumMap = ({ latitude, longitude, name }) => {
+  const animateRef = useRef(true);
   const [locationData, setLocationData] = useState([]);
   const [isOpen, setIsOpen] = useState(false); //マーカー選択
-  const [isVisited,setIsVisited] = useState(true); //訪れたページに遷移するかどうか
+  const [isVisited, setIsVisited] = useState(true); //訪れたページに遷移するかどうか
   const [position, setPosition] = useState({
     latitude: null,
     longitude: null,
@@ -55,7 +68,6 @@ const AlbumMap = ({ latitude, longitude, name }) => {
     fetchData();
   }, []); // 初回のみ取得
 
-
   latitude = 35.1848185;
   longitude = 137.1148651;
 
@@ -67,15 +79,13 @@ const AlbumMap = ({ latitude, longitude, name }) => {
 
   return (
     <div>
-      <div style={{ zIndex: "50", position: "absolute" }}>
-        <RouteButtons />
-      </div>
       <div style={{ zIndex: "10", position: "absolute" }}>
-        <MapContainer center={center} zoom={13} scrollWheelZoom={false}>
+        <MapContainer center={center} zoom={10.5} scrollWheelZoom={true} >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}"
           />
+          <SetViewOnClick animateRef={animateRef} />
           <Marker position={center} />
 
           {/* ここをAlbumPinLocateにしたらアルバムの画面に */}
@@ -84,18 +94,29 @@ const AlbumMap = ({ latitude, longitude, name }) => {
               setIsOpen={setIsOpen}
               setPosition={setPosition}
               locationData={locationData}
+              position={position}
             />
           )}
         </MapContainer>
       </div>
       {/* ここをAlbumModalSheetにしたらアルバムの画面に */}
       <div style={{ zIndex: "80", position: "absolute" }}>
-        <ModalSheet isOpen={isOpen} setIsOpen={setIsOpen} >
-          {
-            isVisited ? <AlbumModalSheet setPosition={setPosition} position={position} setIsVisited={setIsVisited} isVisited={isVisited}/> :
-            <FriendsModalSheet setIsVisited={setIsVisited} isVisited={isVisited}  position={position}/>
-          }
-           {/* <HotModalSheet setPosition={setPosition} position={position} /> */}
+        <ModalSheet isOpen={isOpen} setIsOpen={setIsOpen}>
+          {isVisited ? (
+            <AlbumModalSheet
+              setPosition={setPosition}
+              position={position}
+              setIsVisited={setIsVisited}
+              isVisited={isVisited}
+            />
+          ) : (
+            <FriendsModalSheet
+              setIsVisited={setIsVisited}
+              isVisited={isVisited}
+              position={position}
+            />
+          )}
+          {/* <HotModalSheet setPosition={setPosition} position={position} /> */}
         </ModalSheet>
       </div>
     </div>

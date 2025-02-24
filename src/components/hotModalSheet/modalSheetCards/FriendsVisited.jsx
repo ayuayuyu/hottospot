@@ -3,6 +3,7 @@ import { Icon } from "@iconify/react";
 import { GradationIconButton } from "../../../layout/GradationIconButton";
 import { useEffect, useState } from "react";
 import formatFriends from "../../../firebase/getTable/formatFriends";
+import { GradationButton } from "../../../layout/GradationButton";
 
 export const FriendsVisited = () => {
   const [iconList, setIconList] = useState([]);
@@ -19,6 +20,8 @@ export const FriendsVisited = () => {
     friends();
   }, []);
 
+  const onSubmit = () => {};
+
   return (
     <div className={styles.container}>
       <div className={styles.title}>訪れた友達</div>
@@ -27,10 +30,15 @@ export const FriendsVisited = () => {
         {iconList.map((friendsList, index) => {
           return (
             <div className={styles.friendsicon} key={index}>
-              <img src={friendsList.icon} className={styles.img}/>
+              <img src={friendsList.icon} className={styles.img} />
             </div>
           );
         })}
+        {/* <div className={styles.another}>
+          <GradationButton color="red" onClick={onSubmit}>
+            •••
+          </GradationButton>
+        </div> */}
       </div>
 
       <div

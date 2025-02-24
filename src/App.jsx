@@ -10,7 +10,7 @@ import Auth from './firebase/Auth';
 import Profile from './pages/Profile';
 import Element from './pages/Element';
 import AddFriends from './pages/AddFriends';
-import AddQr from './pages/AddQr';
+import DisplayQrCode from './pages/DisplayQrCode';
 import QrCodeScan from './pages/QrCodeScan';
 // import AlbumMap from "./pages/AlbumMap";
 
@@ -26,7 +26,7 @@ function App() {
           <Route path="/ranking" element={<Ranking />} />
           <Route path="/friendsmodal" element={<FriendsModalSheet />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/addqr" element={<AddQr />} />
+          <Route path="/displayqr" element={<DisplayQrCode />} />
           <Route path="*" element={<h1>Not Found Page</h1>} />
           <Route path="/sign" element={<Element />} />
           <Route path="/profile" element={<Profile />} />

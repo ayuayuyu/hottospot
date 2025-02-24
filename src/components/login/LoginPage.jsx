@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-import Title from "../../layout/home/Title";
-import { WhiteButton } from "../../layout/WhiteButton";
-import HotModalSheet from "../hotModalSheet/HotModalSheet";
-import SignInModal from "../sign/SignInModal";
-import ModalSheet from "../../layout/ModalSheet";
-import { motion } from "framer-motion";
-import Sign from "../sign/Sign";
-import style from "./LoginPage.module.scss";
-import SignInGoole from "../../firebase/SignInGoogle";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import Title from '../../layout/home/Title';
+import { WhiteButton } from '../../layout/WhiteButton';
+import HotModalSheet from '../hotModalSheet/HotModalSheet';
+import SignInModal from '../sign/SignInModal';
+import ModalSheet from '../../layout/ModalSheet';
+import { motion } from 'framer-motion';
+import Sign from '../sign/Sign';
+import style from './LoginPage.module.scss';
+import SignInGoole from '../../firebase/SignInGoogle';
+import { useNavigate } from 'react-router-dom';
 
 function LoginPage() {
   const [isOpen, setIsOpen] = useState(false); //マーカー選択
@@ -18,7 +18,7 @@ function LoginPage() {
   const navigate = useNavigate();
 
   const conectMap = async () => {
-    navigate("/map");
+    navigate('/map');
   };
 
   const handleSignIn = () => {
@@ -35,13 +35,13 @@ function LoginPage() {
   };
 
   const afterGoogle = () => {
-    console.log("aftergoogle");
+    console.log('aftergoogle');
     setIsSign(true);
   };
 
   if (isSign == true) {
     conectMap();
-    console.log("isSign2", isSign);
+    console.log('isSign2', isSign);
   }
   // console.log("isSign", isSign);
 

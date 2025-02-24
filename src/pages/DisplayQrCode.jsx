@@ -1,27 +1,28 @@
-import React from "react";
-import { PageTitle } from "../layout/PageTitle";
-import { auth } from "../firebase/api/firebase";
-import { QRCodeSVG } from "qrcode.react";
-import { useState } from "react";
-import styles from "./AddQr.module.scss";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { GradationButton } from "../layout/GradationButton";
+import { PageTitle } from '../layout/PageTitle';
+import { auth } from '../firebase/api/firebase';
+import { QRCodeSVG } from 'qrcode.react';
+import styles from './displayQrCode.module.scss';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { GradationButton } from '../layout/GradationButton';
+import { Loading } from '../layout/loading';
 
-function AddQr() {
-  const [isOpen, setOpen] = useState(false);
-  const [users, loading, error] = useAuthState(auth);
-  const [currentPage, setCurrentPage] = useState("home");
+function DisplayQrCode() {
+  const [user, loading, error] = useAuthState(auth);
   const copyClipboard = async () => {
     try {
       await navigator.clipboard.writeText(uid);
-      console.log("コピー成功しました！！");
+      console.log('コピー成功しました！！');
     } catch (err) {
       console.log(err);
     }
   };
 
   if (loading) {
-    return <p>読み込み中...</p>;
+    return <Loading message={'読み込み中'} />;
+  }
+
+  if (!user) {
+    return <p>ログインをしてください</p>;
   }
 
   if (error) {
@@ -47,4 +48,4 @@ function AddQr() {
   );
 }
 
-export default AddQr;
+export default DisplayQrCode;

@@ -1,32 +1,32 @@
-import { useRive } from "@rive-app/react-canvas";
-import { motion } from "framer-motion";
+import { useRive } from '@rive-app/react-canvas';
+import { motion } from 'framer-motion';
 
-export default function LoadingAnimation() {
-  const STATE_MACHINE_NAME = "State Machine 1";
+export default function LoadingAnimation({ message }) {
+  const STATE_MACHINE_NAME = 'State Machine 1';
 
   const { rive, RiveComponent } = useRive({
-    src: "/animations/fileBackGround.riv",
+    src: '/animations/fileBackGround.riv',
     autoplay: true,
     stateMachines: STATE_MACHINE_NAME,
-    artboard: "Artboard 2",
-    fit: "cover",
+    artboard: 'Artboard 2',
+    fit: 'cover',
   });
 
   return (
-    <div style={{ width: "100vw", height: "100vh", position: "relative" }}>
+    <div style={{ width: '100vw', height: '100vh', position: 'relative' }}>
       <div
         style={{
-          position: "absolute",
-          left: "50%",
-          top: "50%",
-          transform: "translate(-50%, -80%)",
-          width: "100%",
-          fontSize: "36px",
-          fontWeight: "bold",
-          color: "#ffffff",
+          position: 'absolute',
+          left: '50%',
+          top: '50%',
+          transform: 'translate(-50%, -80%)',
+          width: '100%',
+          fontSize: '36px',
+          fontWeight: 'bold',
+          color: '#ffffff',
         }}
       >
-        現在地を取得中
+        {message}
         {[...Array(3)].map((_, i) => (
           <motion.span
             key={i}
@@ -34,7 +34,7 @@ export default function LoadingAnimation() {
             transition={{
               duration: 1,
               repeat: Infinity,
-              ease: "easeInOut",
+              ease: 'easeInOut',
               delay: i * 0.2, // 順番に表示
             }}
           >
@@ -44,12 +44,12 @@ export default function LoadingAnimation() {
       </div>
       <RiveComponent
         style={{
-          position: "absolute",
+          position: 'absolute',
           top: 0,
           left: 0,
-          width: "100vw",
-          height: "100vh",
-          zIndex: "-1",
+          width: '100vw',
+          height: '100vh',
+          zIndex: '-1',
         }}
       />
     </div>

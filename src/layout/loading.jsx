@@ -1,10 +1,10 @@
-import RatingAnimation from "../components/animation/LoadingAnimation";
+import RatingAnimation from '../components/animation/LoadingAnimation';
 
-export const PopCircleButton = () => {
+export const Loading = ({ message }) => {
   return (
     <div>
-      <RatingAnimation />
-      <div>現在地取得中...</div>
+      <RatingAnimation message={message} />
+      <div>{message}</div>
     </div>
   );
 };

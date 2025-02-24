@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
 import styles from "./friendsModalSheet.module.scss";
 import { Icon } from "@iconify/react/dist/iconify.js";

@@ -1,6 +1,6 @@
-import React from "react";
-import fire from "../../../public/img/Vector.png";
-import style from "./Background.module.scss"
+import React from 'react';
+import fire from '../../../public/img/Vector.png';
+import style from './Background.module.scss';
 
 function Background() {
   return (

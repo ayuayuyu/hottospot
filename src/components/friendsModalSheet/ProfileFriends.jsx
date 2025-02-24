@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import styles from './friendsModalSheet.Module.scss';
+import styles from './friendsModalSheet.module.scss';
 import formatFriends from '../../firebase/getTable/formatFriends';
 
 function ProfileFriends() {

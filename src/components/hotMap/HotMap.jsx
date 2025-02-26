@@ -24,13 +24,29 @@ import AlbumModalSheet from '../albumMap/AlbumModalSheet';
 
 // import LoadingAnimation from "../animation/LoadingAnimation";
 import { Loading } from '../../layout/loading';
+import { useRef } from "react";
+import { useMapEvent } from "react-leaflet";
+
+function SetViewOnClick({ animateRef }) {
+  const map = useMapEvent('click', (e) => {
+    map.setView(e.latlng, map.getZoom(), {
+      animate: true ,
+    })
+  })
+
+  return null
+}
+
 
 const HotMap = ({ latitude, longitude }) => {
+  const animateRef = useRef(false)
   const [isHotModal, setIsHotModalAtom] = useAtom(isHotModalAtom);
 
   const [position, setPosition] = useAtom(locationPositionAtom); //選択したマーカーの緯度と経度
   const [modalWindowIsOpen, setModalWindowIsOpen] = useAtom(modalWindowAtom);
   const [locationData, setLocationData] = useAtom(locationDataAtom);
+
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -108,10 +124,12 @@ const HotMap = ({ latitude, longitude }) => {
       </ModalWindow>
       <div style={{ zIndex: '10', position: 'absolute' }}>
         <MapContainer center={center} zoom={13} scrollWheelZoom={false}>
-          <TileLayer
+        <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}"
           />
+
+        <SetViewOnClick animateRef={animateRef} />
           <Marker position={center} />
 
           {/* ここをAlbumPinLocateにしたらアルバムの画面に */}

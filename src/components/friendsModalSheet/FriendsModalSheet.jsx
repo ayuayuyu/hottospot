@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
-import styles from './friendsModalSheet.module.scss';
-import { Icon } from '@iconify/react/dist/iconify.js';
-import formatLike from '../../firebase/getTable/formatLike';
-import { li } from 'framer-motion/client';
-import ProfileFriends from './ProfileFriends';
-import VisitedFriends from './VisitedFriends';
+import styles from "./friendsModalSheet.module.scss";
+import { Icon } from "@iconify/react/dist/iconify.js";
+import formatLike from "../../firebase/getTable/formatLike";
+import { li } from "framer-motion/client";
+import ProfileFriends from "./ProfileFriends";
+import VisitedFriends from "./VisitedFriends";
 
 function FriendsModalSheet({ setIsVisited, isVisited, position }) {
   const [iconList, setIconList] = useState([]);

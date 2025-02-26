@@ -30,9 +30,7 @@ function AlbumModalSheet({ setPosition, position, isVisited, setIsVisited }) {
   useEffect(() => {
     async function photoLocate() {
       const list = await formatPhoto();
-      console.log("list",list)
       const getlist = list.map((l) => {
-        console.log("list", l);
 
         return l;
       });
@@ -50,8 +48,6 @@ function AlbumModalSheet({ setPosition, position, isVisited, setIsVisited }) {
         </div>
         <div className={styles.friendsList}>
           {location.map((locate, index) => {
-            console.log("locate.latitude", locate.photo);
-            console.log("position.latitude", typeof position.latitude);
 
             return locate.latitude === Number(position.latitude) ? (
               <img src={locate.photo} className={styles.img} key={index} />

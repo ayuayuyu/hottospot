@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import formatPhoto from "../../firebase/getTable/formatPhoto";
-import { useEffect } from "react";
-import getAllLocation from "../../firebase/getTable/getAllLocation";
+import React, { useState } from 'react';
+import formatPhoto from '../../firebase/getTable/formatPhoto';
+import { useEffect } from 'react';
+import getAllLocation from '../../firebase/getTable/getAllLocation';
 
 function AlbumPhoto() {
   const [photo, setPhoto] = useState([]);
@@ -9,11 +9,11 @@ function AlbumPhoto() {
     const fetchData = async () => {
       try {
         const data = await getAllLocation();
-        console.log("locationData:", data); // デバッグ用
+        console.log('locationData:', data); // デバッグ用
         setPhoto(data);
-        console.log("data.photo", data.photo);
+        console.log('data.photo', data.photo);
       } catch (error) {
-        console.error("Error fetching location data:", error);
+        console.error('Error fetching location data:', error);
       }
     };
 
@@ -22,14 +22,17 @@ function AlbumPhoto() {
 
   return (
     <div>
-      {photo.map((path,index) => {
-        console.log("path", path.photo);
+      {photo.map((path, index) => {
+        console.log('path', path.photo);
 
-        return(
-            <img src={path.photo} key={index} style={{width:"100px" , height:"100px", borderRadius:"50%"}}/>
-        )
+        return (
+          <img
+            src={path.photo}
+            key={index}
+            style={{ width: '100px', height: '100px', borderRadius: '50%' }}
+          />
+        );
       })}
-      
     </div>
   );
 }

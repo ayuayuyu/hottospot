@@ -1,24 +1,24 @@
-import { RankingCard } from "./../components/ranking/RankingCard";
-import { PageTitle } from "./../layout/PageTitle";
-import RouteButtons from "./../layout/RouteButtons";
-import { locationDataAtom } from "./../atoms/locationDataAtom";
-import { useAtomValue } from "jotai";
-import { motion } from "framer-motion";
+import { RankingCard } from './../components/ranking/RankingCard';
+import { PageTitle } from './../layout/PageTitle';
+import RouteButtons from './../layout/RouteButtons';
+import { locationDataAtom } from './../atoms/locationDataAtom';
+import { useAtomValue } from 'jotai';
+import { motion } from 'framer-motion';
 
 function Ranking() {
   const locationData = useAtomValue(locationDataAtom);
 
   const sortedLocationData = [...locationData].sort(
-    (a, b) => b.likeCount - a.likeCount
+    (a, b) => b.likeCount - a.likeCount,
   );
 
   return (
     <div
       style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        backgroundColor: "#F4F3F3",
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        backgroundColor: '#F4F3F3',
       }}
     >
       <PageTitle pageName="ランキング">
@@ -28,11 +28,11 @@ function Ranking() {
       <RouteButtons />
       <div
         style={{
-          marginTop: "210px",
-          marginBottom: "100px",
-          display: "flex",
-          flexDirection: "column",
-          gap: "20px",
+          marginTop: '210px',
+          marginBottom: '100px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '20px',
         }}
       >
         {sortedLocationData.map((data, index) => (
@@ -40,7 +40,7 @@ function Ranking() {
             key={index}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
+            transition={{ duration: 0.5, ease: 'easeInOut' }}
             viewport={{ once: true }}
           >
             <RankingCard

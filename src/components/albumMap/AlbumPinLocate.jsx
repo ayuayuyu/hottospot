@@ -1,4 +1,4 @@
-import L from "leaflet";
+import L from 'leaflet';
 
 import {
   Marker,
@@ -6,16 +6,16 @@ import {
   useMap,
   useMapEvent,
   useMapEvents,
-} from "react-leaflet";
-import icon from "/public/img/Group 17 (1).png";
-import { useState, useEffect, useRef } from "react";
+} from 'react-leaflet';
+import icon from '/public/img/Group 17 (1).png';
+import { useState, useEffect, useRef } from 'react';
 // import locations from '../../../api/locations'
-import "leaflet.awesome-markers/dist/leaflet.awesome-markers.css";
-import "leaflet.awesome-markers";
-import { height, width } from "@mui/system";
-import { locationPositionAtom } from "../../atoms/locationPositionAtom";
-import { useAtom } from "jotai";
-import { ReactSVG } from "react-svg/dist";
+import 'leaflet.awesome-markers/dist/leaflet.awesome-markers.css';
+import 'leaflet.awesome-markers';
+import { height, width } from '@mui/system';
+import { locationPositionAtom } from '../../atoms/locationPositionAtom';
+import { useAtom } from 'jotai';
+import { ReactSVG } from 'react-svg/dist';
 
 function AlbumPinLocate({ setIsOpen, setPosition, locationData }) {
   const locationArr = Object.values(locationData);
@@ -25,8 +25,7 @@ function AlbumPinLocate({ setIsOpen, setPosition, locationData }) {
   const [isMaker, setIsMarker] = useState(false);
   //const locationData = useAtomValue(locationPositionAtom);
 
-  console.log("photo", locationArr);
-
+  console.log('photo', locationArr);
 
   useMapEvents({
     zoomend: () => {
@@ -34,48 +33,47 @@ function AlbumPinLocate({ setIsOpen, setPosition, locationData }) {
     },
   });
 
-
   const getIconSidze = () => {
-    console.log("zoomLevel", zoomLevel);
+    console.log('zoomLevel', zoomLevel);
     if (zoomLevel < 12) {
-      return "100%";
+      return '100%';
     }
 
     if (zoomLevel >= 12 && zoomLevel <= 13) {
-      return "80%";
+      return '80%';
     }
     //  else if (zoomLevel == 13) {
     //   return "5%";
     // }
     else if (zoomLevel == 14) {
-      return "50%";
+      return '50%';
     } else if (zoomLevel == 15) {
-      return "50%";
+      return '50%';
     } else if (zoomLevel > 15) {
-      return "50%";
+      return '50%';
     }
     //return zoomLevel > 12 ? "30%" : "80%";
     //return zoomLevel > 12 ? "30%" : "80%";
   };
 
   const getPhotoSidze = () => {
-    console.log("zoomLevel", zoomLevel);
+    console.log('zoomLevel', zoomLevel);
     if (zoomLevel < 12) {
-      return "80%";
+      return '80%';
     }
 
     if (zoomLevel >= 12 && zoomLevel <= 13) {
-      return "60%";
+      return '60%';
     }
     //  else if (zoomLevel == 13) {
     //   return "5%";
     // }
     else if (zoomLevel == 14) {
-      return "50%";
+      return '50%';
     } else if (zoomLevel == 15) {
-      return "50%";
+      return '50%';
     } else if (zoomLevel > 15) {
-      return "50%";
+      return '50%';
     }
     //return zoomLevel > 12 ? "30%" : "80%";
     //return zoomLevel > 12 ? "30%" : "80%";
@@ -89,11 +87,10 @@ function AlbumPinLocate({ setIsOpen, setPosition, locationData }) {
     ];
   };
 
-
   return (
     <div style={{}}>
       {locationArr.map((location, index) => {
-        console.log("photo", location);
+        console.log('photo', location);
 
         return (
           <SVGOverlay
@@ -118,7 +115,7 @@ function AlbumPinLocate({ setIsOpen, setPosition, locationData }) {
               height={getIconSidze()}
               // height={getIconSidze()}
               //transform= "translate3d(0, 0, 0)"
-              style={{ cursor: "pointer", pointerEvents: "visiblePainted" }}
+              style={{ cursor: 'pointer', pointerEvents: 'visiblePainted' }}
               preserveAspectRatio="xMidYMid slice"
               onClick={() => {
                 setIsOpen(true);

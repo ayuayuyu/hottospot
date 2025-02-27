@@ -2,18 +2,6 @@ import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 import { storage } from '../api/firebase';
 import setPhotosTable from '../setTable/setPhotosTable';
 
-// const uploadPhoto = (file, locationId) => {
-//   const photo = file.target.file[0];
-//   const storageRef = ref(storage, 'photos/' + 'photo/' + photo.name);
-//   const upload = uploadBytesResumable(storageRef, photo);
-//   console.log(`upload: ${upload}`);
-
-//   getDownloadURL(upload.snapshot.ref).then((downloadURL) => {
-//     const url = downloadURL;
-//     setPhotosTable(locationId, url);
-//   });
-// };
-// export default uploadPhoto;
 const uploadPhoto = (event, locationId) => {
   const file = event.target.files[0]; // `files` の複数形にする
 
@@ -38,7 +26,7 @@ const uploadPhoto = (event, locationId) => {
       try {
         const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
         setPhotosTable(locationId, downloadURL);
-        console.log('ダウンロードURL:', downloadURL);
+        // console.log('ダウンロードURL:', downloadURL);
       } catch (error) {
         console.error('URL取得エラー', error);
       }

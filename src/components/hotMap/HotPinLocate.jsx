@@ -1,20 +1,19 @@
-import { Marker, useMap } from "react-leaflet";
-import L from "leaflet";
-import blueicon from "../../../public/img/blueIcon.png";
-import greenicon from "../../../public/img/greenIcon.png";
-import redicon from "../../../public/img/redIcon.png";
-import fireicon from "../../../public/img/fireIcon.png";
-import PropTypes from "prop-types";
+import { Marker, useMap } from 'react-leaflet';
+import L from 'leaflet';
+import blueicon from '../../../public/img/blueIcon.png';
+import greenicon from '../../../public/img/greenIcon.png';
+import redicon from '../../../public/img/redIcon.png';
+import fireicon from '../../../public/img/fireIcon.png';
+import PropTypes from 'prop-types';
 
-import "leaflet.awesome-markers/dist/leaflet.awesome-markers.css";
-import "leaflet.awesome-markers";
-import { useState } from "react";
+import 'leaflet.awesome-markers/dist/leaflet.awesome-markers.css';
+import 'leaflet.awesome-markers';
+import { useState } from 'react';
 
 function HotPinLocate({ setIsOpen, setPosition, locationData }) {
-  const [locate,setLocate] = useState(false)
-    const map = useMap();
+  const [locate, setLocate] = useState(false);
+  const map = useMap();
   const locationArr = Object.values(locationData);
-  
 
   const handleOpen = (location) => {
     setIsOpen(true);
@@ -22,6 +21,7 @@ function HotPinLocate({ setIsOpen, setPosition, locationData }) {
       latitude: location.latitude,
       longitude: location.longitude,
       name: location.name,
+      explanation: location.explanation,
       address: location.address,
       likeCount: location.likeCount,
       locationId: location.locationId,
@@ -45,7 +45,7 @@ function HotPinLocate({ setIsOpen, setPosition, locationData }) {
         : fireicon;
 
     return L.divIcon({
-      className: "custom-marker",
+      className: 'custom-marker',
       html: `
             <div style="position: relative; text-align: center;">
               <img src=${showIcon} style="width: 50px; height: 50px;" />
@@ -62,7 +62,6 @@ function HotPinLocate({ setIsOpen, setPosition, locationData }) {
       iconAnchor: [25, 25],
     });
   }
-
 
   return (
     <div>

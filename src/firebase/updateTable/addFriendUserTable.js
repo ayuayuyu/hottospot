@@ -3,7 +3,7 @@ import { doc, getDoc, updateDoc, arrayUnion } from 'firebase/firestore';
 
 const addFriendUserTable = async (friendUid) => {
   const currentUserId = auth.currentUser.uid;
-  console.log(`addFriendUserTable UID : ${friendUid}`);
+  // console.log(`addFriendUserTable UID : ${friendUid}`);
 
   try {
     const currentUserRef = doc(db, 'users', currentUserId);
@@ -23,7 +23,7 @@ const addFriendUserTable = async (friendUid) => {
       friends: arrayUnion(currentUserRef),
     });
 
-    console.log(`フレンド追加完了`);
+    // console.log(`フレンド追加完了`);
   } catch (error) {
     console.error('フレンド登録エラー:', error.code, error.message);
     return error.message;

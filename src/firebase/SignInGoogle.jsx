@@ -20,9 +20,9 @@ const signInWithGoogle = async () => {
     const userSnap = await getDoc(userRef);
 
     if (userSnap.exists()) {
-      console.log('既存ユーザーとしてサインイン:', user.email);
+      // console.log('既存ユーザーとしてサインイン:', user.email);
     } else {
-      console.log('新規ユーザーとして登録:', user.email);
+      // console.log('新規ユーザーとして登録:', user.email);
       await setUserTable();
     }
   } catch (error) {

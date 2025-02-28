@@ -43,8 +43,6 @@ const formatLike = async () => {
 
   // 無効なデータ (null) を除外
   const validLikes = formattedLikes.filter((item) => item !== null);
-
-  console.log('Formatted Like Data:', validLikes);
   return validLikes;
 };
 

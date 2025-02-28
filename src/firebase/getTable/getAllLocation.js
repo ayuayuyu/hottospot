@@ -7,7 +7,6 @@ const getAllLocation = async () => {
     const locationRef = collection(db, 'locations');
     const snapShot = await getDocs(locationRef);
     const locationData = snapShot.docs.map((doc) => ({ ...doc.data() }));
-    console.log('location:', locationData);
     //観光地全てを配列で返す
     return locationData;
   } catch (error) {

@@ -6,7 +6,6 @@ const signOutUser = async () => {
   try {
     //これでサインアウトできる
     signOut(auth);
-    console.log('サインアウト');
   } catch (error) {
     console.error('サインアウトエラー:', error.code, error.message);
   }

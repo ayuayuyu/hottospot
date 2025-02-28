@@ -6,7 +6,8 @@ function AlbumPinLocate({ setIsOpen, setPosition, locationData }) {
   const locationArr = Object.values(locationData);
   const map = useMap();
   const [zoomLevel, setZoomLevel] = useState(map.getZoom());
-  console.log("photo", locationArr);
+
+
   useMapEvents({
     zoomend: () => {
       setZoomLevel(map.getZoom());

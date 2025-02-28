@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import{ useEffect, useState } from 'react';
 
 import styles from "./friendsModalSheet.module.scss";
 import { Icon } from "@iconify/react/dist/iconify.js";
 import formatLike from "../../firebase/getTable/formatLike";
-import { li } from "framer-motion/client";
-import ProfileFriends from "./ProfileFriends";
-import VisitedFriends from "./VisitedFriends";
+import { isVisitedFriends } from '../../atoms/isVisitedFriends';
+import { useAtom } from 'jotai';
+import VisitedFriends from './VisitedFriends';
 
-function FriendsModalSheet({ setIsVisited, isVisited, position }) {
+function FriendsModalSheet({ position }) {
   const [iconList, setIconList] = useState([]);
+  const [isVisited,setIsVisited] = useAtom(isVisitedFriends);
 
   useEffect(() => {
     async function likeCount() {

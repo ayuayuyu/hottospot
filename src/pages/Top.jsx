@@ -4,7 +4,6 @@ import { auth } from '../firebase/api/firebase';
 
 import Title from '../layout/home/Title';
 import Background from '../layout/home/Background';
-import { useNavigate } from 'react-router-dom';
 import { Loading } from '../layout/loading';
 import ErrorPage from '../layout/error/ErrorPage';
 
@@ -20,15 +19,6 @@ function Top() {
   if (error) {
     return <ErrorPage error={error.message} />;
   }
-
-  // const handleRanking = () => {
-  //   navigate('/ranking');
-  //   console.log('ranking');
-  // };
-
-  // const handleMap = () => {
-  //   navigate('/map');
-  // };
 
   return (
     <>

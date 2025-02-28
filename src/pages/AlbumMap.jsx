@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
-import HotMapPage from "../components/hotMap/HotMapPage";
-import RouteButtons from "../layout/RouteButtons";
 import { useAtomValue } from "jotai";
-import { motion } from "framer-motion";
+import { useState } from "react";
 import { isHotModalAtom } from "../atoms/isHotModalAtom";
+import { useEffect } from "react";
+import { motion } from 'framer-motion';
+import RouteButtons from "../layout/RouteButtons";
+import AlbumMapPage from "../components/albumMap/AlbumMapPage";
 
-function Map() {
+function AlbumMap() {
   const [position, setPosition] = useState({ latitude: null, longitude: null });
   const isHotModal = useAtomValue(isHotModalAtom);
 
@@ -35,10 +36,10 @@ function Map() {
 
   return (
     <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0 }}>
-      <HotMapPage latitude={position.latitude} longitude={position.longitude} />
+      <AlbumMapPage latitude={position.latitude} longitude={position.longitude} />
       {isHotModal ? <></> : <RouteButtonsAnimation />}
     </div>
   );
 }
 
-export default Map;
+export default AlbumMap;

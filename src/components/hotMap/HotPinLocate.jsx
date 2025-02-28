@@ -6,13 +6,11 @@ import redicon from '../../../public/img/redIcon.png';
 import fireicon from '../../../public/img/fireIcon.png';
 import PropTypes from 'prop-types';
 
-import 'leaflet.awesome-markers/dist/leaflet.awesome-markers.css';
-import 'leaflet.awesome-markers';
-import { useState } from 'react';
+import "leaflet.awesome-markers/dist/leaflet.awesome-markers.css";
+import "leaflet.awesome-markers";
 
 function HotPinLocate({ setIsOpen, setPosition, locationData }) {
-  const [locate, setLocate] = useState(false);
-  const map = useMap();
+    const map = useMap();
   const locationArr = Object.values(locationData);
 
   const handleOpen = (location) => {

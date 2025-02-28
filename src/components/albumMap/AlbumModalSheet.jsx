@@ -1,31 +1,11 @@
-import { Box, Button, Drawer, Icon, Modal, Typography } from "@mui/material";
-import { Global } from "@emotion/react";
-import { styled } from "@mui/material/styles";
-import { grey } from "@mui/material/colors";
-import SwipeableDrawer from "@mui/material/SwipeableDrawer";
-import { Meter } from "../hotModalSheet/modalSheetCards/Meter";
-import { LocationImage } from "../hotModalSheet/modalSheetCards/LocationImage";
-import { LocationRanking } from "../hotModalSheet/modalSheetCards/LocationRanking";
-import { FriendsVisited } from "../hotModalSheet/modalSheetCards/FriendsVisited";
 import styles from "./AlbumModalSheet.module.scss";
-import AlbumModalCards from "./AlbumModalCards";
 import formatPhoto from "../../firebase/getTable/formatPhoto";
 import { useEffect, useState } from "react";
 
-function AlbumModalSheet({ setPosition, position, isVisited, setIsVisited }) {
-  //console.log("position", position);
+function AlbumModalSheet({ setPosition, position,setIsVisited }) {
+
   const [location, setLocation] = useState([]);
-  //const list = await formatLike();
 
-  // const [iconList, setIconList] = useState([]);
-
-  // useEffect(() => {
-  //   async function likeCount() {
-  //     const list = await formatLike();
-  //     setIconList(list);
-  //   }
-  //   likeCount();
-  // }, []);
 
   useEffect(() => {
     async function photoLocate() {

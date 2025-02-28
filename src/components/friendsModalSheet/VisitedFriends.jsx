@@ -21,13 +21,6 @@ function VisitedFriends({ position }) {
     likeCount();
   }, []);
 
-  // const userLatutude = () => {
-  //     iconList.map((iconlist) => {
-  //         console.log("latitude",iconlist)
-  //     })
-  // }
-  // userLatutude()
-
   return (
     <div className={styles.friendsList}>
       {iconList.map((friendsList) => {

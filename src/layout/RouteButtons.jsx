@@ -51,7 +51,7 @@ function RouteButtons() {
       )}
 
       {/* アルバムのアイコンボタン */}
-      {pathName === "map" ? (
+      {pathName === "/albummap" ? (
         <GradationIconButton color="red">
           <Icon
             icon="material-symbols:photo-album-outline-rounded"

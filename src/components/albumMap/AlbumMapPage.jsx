@@ -1,50 +1,36 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "leaflet/dist/leaflet.css";
 import "../../pages/Map.css";
 import { useEffect } from "react";
-import { Drawer } from "vaul";
-import ModalWindow from "./../../layout/ModalWindow";
 import { modalWindowAtom } from "../../atoms/modalWindowAtom";
 import { useAtom } from "jotai";
 
-import {
-  Circle,
-  CircleMarker,
-  MapContainer,
-  Marker,
-  Popup,
-  TileLayer,
-} from "react-leaflet";
-import { Box, Modal, Typography } from "@mui/material";
+import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import AlbumModalSheet from "./AlbumModalSheet";
-import HotPinLocate from "../hotMap/HotPinLocate";
 import AlbumPinLocate from "./AlbumPinLocate";
-import HotModalSheet from "../hotModalSheet/HotModalSheet";
 import getAllLocation from "../../firebase/getTable/getAllLocation";
 import ModalSheet from "../../layout/ModalSheet";
-import { GradationButton } from "../../layout/GradationButton";
-import RouteButtons from "../../layout/RouteButtons";
-import Profile from "../../pages/Profile";
 import FriendsModalSheet from "../friendsModalSheet/FriendsModalSheet";
 import "leaflet.awesome-markers/dist/leaflet.awesome-markers.css";
 import "leaflet.awesome-markers";
 import { useRef } from "react";
 import { useMapEvent } from "react-leaflet";
+import { isHotModalAtom } from "../../atoms/isHotModalAtom";
 
-function SetViewOnClick({ animateRef }) {
+function SetViewOnClick() {
   const map = useMapEvent("click", (e) => {
     map.setView(e.latlng, map.getZoom(), {
-      animate: true ,
+      animate: true,
     });
   });
 
   return null;
 }
 
-const AlbumMap = ({ latitude, longitude, name }) => {
+const AlbumMapPage = ({ latitude, longitude, name }) => {
   const animateRef = useRef(true);
   const [locationData, setLocationData] = useState([]);
-  const [isOpen, setIsOpen] = useState(false); //マーカー選択
+
   const [isVisited, setIsVisited] = useState(true); //訪れたページに遷移するかどうか
   const [position, setPosition] = useState({
     latitude: null,
@@ -52,6 +38,9 @@ const AlbumMap = ({ latitude, longitude, name }) => {
     name: null,
   }); //選択したマーカーの緯度と経度
   const [modalWindowIsOpen, setModalWindowIsOpen] = useAtom(modalWindowAtom); //マーカー選択
+  const [isHotModal, setIsHotModalAtom] = useAtom(isHotModalAtom);
+  
+  console.log("isHotModal",isHotModal)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -80,7 +69,12 @@ const AlbumMap = ({ latitude, longitude, name }) => {
   return (
     <div>
       <div style={{ zIndex: "10", position: "absolute" }}>
-        <MapContainer center={center} zoom={10.5} scrollWheelZoom={true} >
+        <MapContainer
+          center={center}
+          zoom={13}
+          scrollWheelZoom={true}
+          zoomControl={false}
+        >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://mt1.google.com/vt/lyrs=r&x={x}&y={y}&z={z}"
@@ -88,10 +82,9 @@ const AlbumMap = ({ latitude, longitude, name }) => {
           <SetViewOnClick animateRef={animateRef} />
           <Marker position={center} />
 
-          {/* ここをAlbumPinLocateにしたらアルバムの画面に */}
           {locationData && (
             <AlbumPinLocate
-              setIsOpen={setIsOpen}
+              setIsOpen={setIsHotModalAtom}
               setPosition={setPosition}
               locationData={locationData}
               position={position}
@@ -99,9 +92,12 @@ const AlbumMap = ({ latitude, longitude, name }) => {
           )}
         </MapContainer>
       </div>
-      {/* ここをAlbumModalSheetにしたらアルバムの画面に */}
       <div style={{ zIndex: "80", position: "absolute" }}>
-        <ModalSheet isOpen={isOpen} setIsOpen={setIsOpen}>
+        <ModalSheet
+          isOpen={isHotModal}
+          setIsOpen={setIsHotModalAtom}
+          height={520}
+        >
           {isVisited ? (
             <AlbumModalSheet
               setPosition={setPosition}
@@ -116,11 +112,10 @@ const AlbumMap = ({ latitude, longitude, name }) => {
               position={position}
             />
           )}
-          {/* <HotModalSheet setPosition={setPosition} position={position} /> */}
         </ModalSheet>
       </div>
     </div>
   );
 };
 
-export default AlbumMap;
+export default AlbumMapPage;

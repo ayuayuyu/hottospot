@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import formatPhoto from "../../firebase/getTable/formatPhoto";
+import { useState } from "react";
 import { useEffect } from "react";
 import getAllLocation from "../../firebase/getTable/getAllLocation";
 

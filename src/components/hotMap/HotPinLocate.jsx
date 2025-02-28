@@ -8,10 +8,8 @@ import PropTypes from "prop-types";
 
 import "leaflet.awesome-markers/dist/leaflet.awesome-markers.css";
 import "leaflet.awesome-markers";
-import { useState } from "react";
 
 function HotPinLocate({ setIsOpen, setPosition, locationData }) {
-  const [locate,setLocate] = useState(false)
     const map = useMap();
   const locationArr = Object.values(locationData);
   

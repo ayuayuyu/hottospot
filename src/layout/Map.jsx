@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import CurrentLocateion from "../components/albumMap/AlbumMap";
-import AlbumMap from "../components/albumMap/AlbumMap";
+import AlbumMap from "../components/albumMap/AlbumMapPage";
 
 function Map() {
   const [position, setPosition] = useState({ latitude: null, longitude: null });

@@ -1,26 +1,27 @@
 import styles from "./FriendsVisited.module.scss";
 import { Icon } from "@iconify/react";
-import { GradationIconButton } from "../../../layout/GradationIconButton";
 import { useEffect, useState } from "react";
 import formatFriends from "../../../firebase/getTable/formatFriends";
-import { GradationButton } from "../../../layout/GradationButton";
+import {isVisitedFriends} from "../../../atoms/isVisitedFriends"
+import { useAtom } from "jotai";
 
 export const FriendsVisited = () => {
   const [iconList, setIconList] = useState([]);
+  const [isVisited,setIsVisited] = useAtom(isVisitedFriends);
 
   useEffect(() => {
     const friends = async () => {
       const list = await formatFriends();
       // console.log("list", list);
-      const icon = list.map((i) => {
-        console.log("icon", i.icon, "name", i.name);
-      });
       setIconList(list);
     };
     friends();
   }, []);
 
-  const onSubmit = () => {};
+  const handleVisited = () => {
+    setIsVisited(false)
+    console.log("isopen",isVisited)
+  }
 
   return (
     <div className={styles.container}>
@@ -34,16 +35,11 @@ export const FriendsVisited = () => {
             </div>
           );
         })}
-        {/* <div className={styles.another}>
-          <GradationButton color="red" onClick={onSubmit}>
-            •••
-          </GradationButton>
-        </div> */}
       </div>
 
       <div
         className={styles.bottom}
-        //onClick={() => handleVisited()}
+        onClick={() => handleVisited()}
       >
         <span>詳しく見る</span>
         <Icon
